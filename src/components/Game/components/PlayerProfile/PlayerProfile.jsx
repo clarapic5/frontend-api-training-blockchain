@@ -26,7 +26,7 @@ class PlayerProfile extends Component {
           <span>Lost <span className="count">{ lostCount }</span></span>
         </div>
         <div className="buttons">
-          <Button onClick={ onStartGame } className="green">START</Button>
+          <Button onClick={ onStartGame } className="green">IMPORT</Button>
         </div>
       </div>
     )

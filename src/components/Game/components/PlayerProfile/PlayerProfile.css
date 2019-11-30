@@ -24,12 +24,11 @@
     color: transparent; }
   .PlayerProfile .welcome {
     top: 105px;
-    color: #f4e5bf;
-    font-size: 22.5px;
-    text-shadow: 2px 2px 2px black; }
+    color: #f25050;
+    font-size: 22.5px; }
   .PlayerProfile .username {
     top: 135px;
-    font-size: 50px;
+    font-size: 45px;
     text-shadow: 2px 2px 2px black; }
   .PlayerProfile .record {
     top: 200px;
