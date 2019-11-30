@@ -16,11 +16,11 @@
     margin: auto; }
   .PlayerProfile .title {
     position: absolute;
-    top: -90px;
+    top: -182px;
     width: 392px;
-    height: 163.5px;
+    height: 193.5px;
     background: url("./images/Game_logo.png");
-    background-size: 100%;
+    background-size: 136%;
     color: transparent; }
   .PlayerProfile .welcome {
     top: 105px;
