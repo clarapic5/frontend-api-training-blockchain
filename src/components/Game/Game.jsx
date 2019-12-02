@@ -33,6 +33,7 @@ class Game extends Component {
     });
   }
 
+
   render() {
     // Extract data from user data of `UserReducer` from redux
     const { user: { name, win_count, lost_count } } = this.props;
