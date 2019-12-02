@@ -3,6 +3,17 @@ import React, { Component } from 'react';
 import { Button } from 'components';
 
 class PlayerProfile extends Component {
+
+  constructor(props) {
+    super(props);
+    this.sayHello = this.sayHello.bind(this);
+  }
+
+  sayHello() {
+    alert('Hello!');
+  }
+
+
   render() {
     // Extract data and event functions from props
     const { name, winCount, lostCount, onStartGame } = this.props;
@@ -26,7 +37,7 @@ class PlayerProfile extends Component {
           <span>Lost <span className="count">{ lostCount }</span></span>
         </div>
         <div className="buttons">
-          <Button onClick={ onStartGame } className="green">IMPORT</Button>
+          <Button onClick={this.sayHello} className="green">IMPORT</Button>
         </div>
       </div>
     )
