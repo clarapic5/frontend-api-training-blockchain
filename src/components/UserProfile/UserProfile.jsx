@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// Components
 import { Button } from 'components';
 
-class PlayerProfile extends Component {
+class UserProfile extends Component {
 
   constructor(props) {
     super(props);
@@ -15,14 +14,11 @@ class PlayerProfile extends Component {
 
 
   render() {
-    // Extract data and event functions from props
-    const { name, winCount, lostCount, onStartGame } = this.props;
-
-    // Display welcome message,
-    //         buttons for login / start game,
-    //         number of winning and losing
+    // Extract data nameuser from props
+    const { name} = this.props;
+   
     return (
-      <div className="PlayerProfile">
+      <div className="UserProfile">
         <div className="title">Elemental Battles - powered by EOSIO</div>
 
         <div className="welcome">
@@ -41,4 +37,4 @@ class PlayerProfile extends Component {
   }
 }
 
-export default PlayerProfile;
+export default UserProfile;

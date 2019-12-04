@@ -1,32 +1,29 @@
-// React core
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// Components
-import { Game, Login } from 'components';
-// Services and redux action
+import {Training, Login } from 'components';
+
+// Services and redux
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
 
 class App extends Component {
 
   constructor(props) {
-    // Inherit constructor
     super(props);
-    // Bind functions
+
+    // Bind 
     this.getCurrentUser = this.getCurrentUser.bind(this);
-    // Call getCurrentUser before mounting the app
+    // Call 
     this.getCurrentUser();
   }
-
+  
+  //Function to get the user from the browser local storage
   getCurrentUser() {
-    // Extract setUser of UserAction from redux
     const { setUser } = this.props;
-    // Send a request to API (blockchain) to get the current logged in user
     return ApiService.getCurrentUser()
       // If the server return a username
       .then(username => {
-        // Save the username to redux store
-        // For structure, ref: ./frontend/src/reducers/UserReducer.js
+        // Save the username to redux
         setUser({ name: username });
       })
       // To ignore 401 console error
@@ -34,17 +31,15 @@ class App extends Component {
   }
 
 
-  
-
   render() {
-    // Extract data from state and props (`user` is from redux)
+    // Extract user data from redux
     const { user: { name } } = this.props;
 
-    // If the username is set in redux, display the Game component
+    // If the username is set in redux, display the Training component
     // If the username is NOT set in redux, display the Login component
     return (
       <div className="App">
-        { name && <Game /> }
+        { name && <Training /> }
         { !name && <Login /> }
       </div>
     );
