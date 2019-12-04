@@ -1,4 +1,4 @@
-.Login {
+.UserProfile {
     position: relative;
     margin: 0 auto;
     width: 1366px;
@@ -15,13 +15,13 @@
     transition: all 500ms ease-in-out !important;
 }
 
-.Login>* {
-    margin: 0 auto;
+.UserProfile>* {
+    margin: 5px auto;
     padding: 0 72px;
     width: 615px;
 }
 
-.Login .title {
+.UserProfile .title {
     position: absolute;
     top: -109px;
     width: 507px;
@@ -31,58 +31,68 @@
     color: transparent;
 }
 
-.Login .description {
+.UserProfile .username {
+    top: 135px;
+    font-size: 45px;
+    text-shadow: 2px 2px 2px black;
+}
+
+.UserProfile .welcome {
+    top: 105px;
+    color: #f25050;
+    font-size: 22.5px;
+}
+
+.UserProfile .description {
     margin-top: 50px;
     margin-bottom: 25px;
     line-height: 1.5em;
 }
 
-.Login .field {
+.UserProfile .field {
     margin-bottom: 15px;
 }
 
-.Login .field label {
+.UserProfile .field label {
     color: #5e5454;
     text-transform: uppercase;
 }
 
-.Login .field input {
+.UserProfile .field input {
     margin: 5px 0;
     padding: 4px 20px 0;
     width: 471.5px;
     height: 42px;
-    background: url("./images/Login_form.png");
     background-size: 471.5px;
     color: #312a25;
     letter-spacing: 3px;
     /* https://stackoverflow.com/a/37432260 */
 }
 
-.Login .field input::placeholder {
+.UserProfile .field input::placeholder {
     color: #666;
     letter-spacing: 2px;
 }
 
 @-webkit-keyframes autofill {
     to {
-        background: url("./images/Login_form.png");
         background-size: 471.5px;
     }
 }
 
-.Login .field input:-webkit-autofill {
+.UserProfile .field input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
 }
 
-.Login .form-error {
+.UserProfile .form-error {
     height: 1em;
     font-size: 14.5px;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.Login .form-error .error {
+.UserProfile .form-error .error {
     width: 100%;
     color: #ff5400;
     text-overflow: ellipsis;
@@ -90,7 +100,11 @@
     display: inline-block;
 }
 
-.Login .bottom {
+.UserProfile .bottom {
     margin-top: 5px;
     text-align: center;
+}
+
+.UserProfile .buttons {
+    bottom: 85px;
 }

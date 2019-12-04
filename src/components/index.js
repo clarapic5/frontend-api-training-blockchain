@@ -1,11 +1,13 @@
 import App from './App';
 import Button from './Button';
-import Game from './Game';
+import Training from './Training';
 import Login from './Login';
+import UserProfile from './UserProfile';
 
 export {
-  App,
-  Button,
-  Game,
-  Login,
+    App,
+    Button,
+    Training,
+    Login,
+    UserProfile,
 }
