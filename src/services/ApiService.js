@@ -32,6 +32,10 @@ async function takeAction(action, dataValue) {
 
 class ApiService {
 
+
+  //AQUI TRABAJAS CON REDUX Y OBTIENES EL ACCOUNT_NAME QUE HAYA EN CHROME GUARDADO
+  //Para utilizar esta funcion en algun componente usar:
+  //import UserAction to getCurrentUser
   static getCurrentUser() {
     return new Promise((resolve, reject) => {
       if (!localStorage.getItem("cardgame_account")) {
@@ -49,6 +53,9 @@ class ApiService {
     });
   }
 
+
+  //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT) 
+  //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
   static login({ username, key }) {
     return new Promise((resolve, reject) => {
       localStorage.setItem("cardgame_account", username);
@@ -64,7 +71,9 @@ class ApiService {
         });
     });
   }
+  
 
+  //NO Necesitas la key porque leer datos es publico
   static async getUserByName(username) {
     try {
       const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
