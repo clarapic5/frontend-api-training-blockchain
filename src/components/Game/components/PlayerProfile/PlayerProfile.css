@@ -1,76 +1,85 @@
 .PlayerProfile {
-  position: relative;
-  width: 798px;
-  height: 558.5px;
-  background: url("./images/Game_Profile_frame.png") 15px 0 no-repeat;
-  background-size: 788px;
-  color: #fff;
-  font-size: 30px;
-  text-transform: uppercase; }
-  .PlayerProfile > div,
-  .PlayerProfile .record p,
-  .PlayerProfile .record span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto; }
-  .PlayerProfile .title {
-    position: absolute;
-    top: -182px;
-    width: 392px;
-    height: 193.5px;
-    background: url("./images/Game_logo.png");
-    background-size: 136%;
-    color: transparent; }
-  .PlayerProfile .welcome {
-    top: 105px;
-    color: #f4e5bf;
-    font-size: 22.5px;
-    text-shadow: 2px 2px 2px black; }
-  .PlayerProfile .username {
-    top: 135px;
-    font-size: 50px;
-    text-shadow: 2px 2px 2px black; }
-  .PlayerProfile .record {
-    top: 200px;
-    width: 500.5px;
-    height: 193.5px;
-    background-image: url("./images/Game_Profile_smframe.png");
-    background-size: 100%; }
-    .PlayerProfile .record p:nth-child(1), .PlayerProfile .record span:nth-child(1) {
-      top: 23px;
-      font-size: 15.4px; }
-    .PlayerProfile .record p:nth-child(2), .PlayerProfile .record p:nth-child(4), .PlayerProfile .record span:nth-child(2), .PlayerProfile .record span:nth-child(4) {
-      top: 65px;
-      color: #f4e5bf;
-      font-size: 36px; }
-      .PlayerProfile .record p:nth-child(2) .count, .PlayerProfile .record p:nth-child(4) .count, .PlayerProfile .record span:nth-child(2) .count, .PlayerProfile .record span:nth-child(4) .count {
-        margin-top: 30px;
-        font-size: 45px; }
-    .PlayerProfile .record p:nth-child(2), .PlayerProfile .record span:nth-child(2) {
-      left: 72px;
-      right: auto; }
-    .PlayerProfile .record p:nth-child(4), .PlayerProfile .record span:nth-child(4) {
-      left: auto;
-      right: 72px; }
-    .PlayerProfile .record p:nth-child(3), .PlayerProfile .record span:nth-child(3) {
-      top: 42px;
-      width: 138.5px;
-      height: 140.5px;
-      background-image: url("./images/Game_Profile_icon.png");
-      background-size: 100%;
-      color: transparent; }
-      .PlayerProfile .record p:nth-child(3):before, .PlayerProfile .record p:nth-child(3):after, .PlayerProfile .record span:nth-child(3):before, .PlayerProfile .record span:nth-child(3):after {
-        content: "";
+    position: relative;
+    margin: 0 auto;
+    width: 1366px;
+    height: 768px;
+    background: url("./images/popup_bg.png") center no-repeat;
+    background-size: 615px;
+    color: #5e5454;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform-origin: top left;
+    transition: all 500ms ease-in-out !important; }
+    .PlayerProfile > * {
+      margin: 5px auto;
+      padding: 0 72px;
+      width: 615px; }
+      .PlayerProfile .title {
         position: absolute;
-        top: 67px;
-        width: 149px;
-        height: 7px;
-        background-image: url("./images/Game_Profile_divider_bar.png");
-        background-size: 100%; }
-      .PlayerProfile .record p:nth-child(3):before, .PlayerProfile .record span:nth-child(3):before {
-        left: -142px; }
-      .PlayerProfile .record p:nth-child(3):after, .PlayerProfile .record span:nth-child(3):after {
-        right: -142px; }
-  .PlayerProfile .buttons {
-    bottom: 85px; }
+        top: -109px;
+        width: 507px;
+        height: 257.5px;
+        background: url("./images/Game_logo.png");
+        background-size: 112%;
+        color: transparent; }
+      .PlayerProfile .username {
+        top: 135px;
+        font-size: 45px;
+        text-shadow: 2px 2px 2px black; }
+        .PlayerProfile .welcome {
+          top: 105px;
+          color: #f25050;
+          font-size: 22.5px; }
+    
+    .PlayerProfile .description {
+      margin-top: 50px;
+      margin-bottom: 25px;
+      line-height: 1.5em; }
+    .PlayerProfile .field {
+      margin-bottom: 15px; }
+      .PlayerProfile .field label {
+        color: #5e5454;
+        text-transform: uppercase;
+      }
+      .PlayerProfile .field input {
+        margin: 5px 0;
+        padding: 4px 20px 0;
+        width: 471.5px;
+        height: 42px;
+
+        background-size: 471.5px;
+        color: #312a25;
+        letter-spacing: 3px;
+        /* https://stackoverflow.com/a/37432260 */ }
+        .PlayerProfile .field input::placeholder {
+          color: #666;
+          letter-spacing: 2px; }
+  
+  @-webkit-keyframes autofill {
+    to {
+      background-size: 471.5px; } }
+        .PlayerProfile .field input:-webkit-autofill {
+          -webkit-animation-name: autofill;
+          -webkit-animation-fill-mode: both; }
+    .PlayerProfile .form-error {
+      height: 1em;
+      font-size: 14.5px;
+      white-space: nowrap;
+      overflow: hidden; }
+      .PlayerProfile .form-error .error {
+        width: 100%;
+        color: #ff5400;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block; }
+    .PlayerProfile .bottom {
+      margin-top: 5px;
+      text-align: center; }
+  
+
+      .PlayerProfile .buttons {
+        bottom: 85px; }
+    
