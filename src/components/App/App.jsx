@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Training, Login } from 'components';
+import {Training, Login} from 'components';
 
 // Services and redux
 import { UserAction } from 'actions';
@@ -37,12 +37,11 @@ class App extends Component {
 
     // If the username is set in redux, display the Training component
     // If the username is NOT set in redux, display the Login component
-    return (
-      <div className="App">
-        { name && <Training /> }
-        { !name && <Login /> }
-      </div>
-    );
+    
+    if(name) return (<div className="App"><Training /></div>)
+    if (!name) return (<div className="App"><Login/></div> ) 
+    
+    
   }
 
 }

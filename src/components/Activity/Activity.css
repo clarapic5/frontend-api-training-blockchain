@@ -1,0 +1,110 @@
+.Activity {
+    position: relative;
+    margin: 0 auto;
+    width: 1366px;
+    height: 768px;
+    background: url("./images/popup_bg.png") center no-repeat;
+    background-size: 615px;
+    color: #5e5454;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform-origin: top left;
+    transition: all 500ms ease-in-out !important;
+}
+
+.Activity>* {
+    margin: 5px auto;
+    padding: 0 72px;
+    width: 615px;
+}
+
+.Activity .title {
+    position: absolute;
+    top: -109px;
+    width: 507px;
+    height: 257.5px;
+    background: url("./images/App_logo.png");
+    background-size: 112%;
+    color: transparent;
+}
+
+.Activity .username {
+    top: 135px;
+    font-size: 45px;
+    text-shadow: 2px 2px 2px black;
+}
+
+.Activity .welcome {
+    top: 105px;
+    color: #f25050;
+    font-size: 22.5px;
+}
+
+.Activity .description {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    line-height: 1.5em;
+}
+
+.Activity .field {
+    margin-bottom: 15px;
+}
+
+.Activity .field label {
+    color: #5e5454;
+    text-transform: uppercase;
+}
+
+.Activity .field input {
+    margin: 5px 0;
+    padding: 4px 20px 0;
+    width: 471.5px;
+    height: 42px;
+    background-size: 471.5px;
+    color: #312a25;
+    letter-spacing: 3px;
+    /* https://stackoverflow.com/a/37432260 */
+}
+
+.Activity .field input::placeholder {
+    color: #666;
+    letter-spacing: 2px;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        background-size: 471.5px;
+    }
+}
+
+.Activity .field input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+.Activity .form-error {
+    height: 1em;
+    font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Activity .form-error .error {
+    width: 100%;
+    color: #ff5400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.Activity .bottom {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.Activity .buttons {
+    bottom: 85px;
+}
