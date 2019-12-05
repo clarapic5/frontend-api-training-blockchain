@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // Services and redux
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
-import { UserProfile} from 'components';
+import {UserProfile} from 'components';
 
 class Training extends Component {
 
