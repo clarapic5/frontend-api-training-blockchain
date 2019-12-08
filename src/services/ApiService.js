@@ -56,34 +56,55 @@ class ApiService {
     //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT) 
     //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
     static login({ username, key }) {
-        return new Promise((resolve, reject) => {
-            localStorage.setItem("user_account", username);
-            localStorage.setItem("user_key", key);
-            takeAction("login", { username: username })
-                .then(() => {
-                    resolve();
-                })
-                .catch(err => {
-                    localStorage.removeItem("user_account");
-                    localStorage.removeItem("user_key");
-                    reject(err);
-                });
-        });
-    }
-    static playCard(cardIdx) {
+            return new Promise((resolve, reject) => {
+                localStorage.setItem("user_account", username);
+                localStorage.setItem("user_key", key);
+                takeAction("login", { username: username })
+                    .then(() => {
+                        resolve();
+                    })
+                    .catch(err => {
+                        localStorage.removeItem("user_account");
+                        localStorage.removeItem("user_key");
+                        reject(err);
+                    });
+            });
+        }
+        /*static playCard(cardIdx) {
         return takeAction("playcard", { username: localStorage.getItem("cardgame_account"), player_card_idx: cardIdx });
-    }
+    }*/
+        /*
+            static insert({ id, time, dist, speed, alt, hrate, cal, incl, cad, temp }) {
+                return new Promise((resolve, reject) => {
+                    localStorage.setItem("IDACTIVITY ", id);
+                    localStorage.setItem("distancia ", dist);
+                    localStorage.setItem("user", localStorage.getItem("user_account"));
+                    localStorage.setItem("STATE", "none");
+                    takeAction("insert", {
+                            activityid: 2,
+                            username: localStorage.getItem("user_account"),
+                            training_time: 1,
+                            distance: 1.0,
+                            speed: 1.0,
+                            altitude: 1,
+                            heart_rate: 1,
+                            calories: 1,
+                            incline: 1,
+                            cadence: 1,
+                            temperature: 1.0
+                        })
+                        .then(() => {
+                            localStorage.setItem("STATE", "yes");
+                            resolve();
+                        })
+                        .catch(err => {
+                            localStorage.setItem("STATE", "no");
+                            reject(err);
+                        });
+                });
+            }*/
 
-    static insert(id,
-        time,
-        dist,
-        speed,
-        alt,
-        hrate,
-        cal,
-        incl,
-        cad,
-        temp) {
+    static insert(id, time, dist, speed, alt, hrate, cal, incl, cad, temp) {
         localStorage.setItem("IDACTIVITY ", id);
         localStorage.setItem("distancia ", dist);
         localStorage.setItem("user", localStorage.getItem("user_account"));
@@ -101,12 +122,6 @@ class ApiService {
             temperature: temp
         });
     }
-
-    //uint64_t activityid, name username, uint64_t training_time, double distance, double speed, uint64_t altitude, uint64_t heart_rate, uint64_t calories, uint64_t incline,         
-    // uint64_t cadence, double temperature
-
-
-
 
     //NO Necesitas la key porque leer datos es publico
     static async getUserByName(username) {
