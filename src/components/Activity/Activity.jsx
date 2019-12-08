@@ -38,24 +38,22 @@ class Activity extends Component {
     });
   }
 
-  //Sends a insert transaction to the blockchain
+  //Sends a login transaction to the blockchain
   handleSubmit(event) {
     // Hide data from the url browser
-    //event.preventDefault();
+    event.preventDefault();
     
     const { form } = this.state;
     const { setUser } = this.props;
-    console.log("EEYYY VAMO A CALMARNOOO");
-    ApiService.insert(1,1,1,1,1,1,1,1,1,1);
- 
-    // Send a insert transaction to the blockchain by calling the ApiService
-   /* return ApiService.insert(form)
+
+    // Send a login transaction to the blockchain by calling the ApiService
+    return ApiService.insert(5,1,1,1,1,1,1,1,1,1)
       .then(() => {
         setUser({ name: form.username });  // If it successes, save the username to redux store
       })
       .catch(err => {
         this.setState({ error: err.toString() }); // Otherwise, save the error state for displaying the message
-      });*/
+      });
   }
 
   render() {
@@ -74,6 +72,9 @@ class Activity extends Component {
               name="username"
               value={form.username}
               placeholder="All small letters, a-z, 1-5 or dot, max 12 characters"
+              onChange={this.handleChange}
+              pattern="[\.a-z1-5]{2,12}"
+               
             />
           </div>
           <div className="field">
@@ -82,11 +83,17 @@ class Activity extends Component {
               type="password"
               name="key"
               value={form.key}
+              onChange={this.handleChange}
+              pattern="^.{51,}$"
+             
             />
-          </div>  
+          </div>
+          <div className="field form-error">
+            {error && <span className="error">{error}</span>}
+          </div>
           <div className="bottom">
             <Button type="submit" className="green">
-              {"ACTIVITY"}
+              {"CONFIRM"}
             </Button>
           </div>
         </form>
