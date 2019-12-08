@@ -33,8 +33,6 @@ async function takeAction(action, dataValue) {
 
 
 class ApiService {
-
-
     //AQUI TRABAJAS CON REDUX Y OBTIENES EL ACCOUNT_NAME QUE HAYA EN CHROME GUARDADO
     //Para utilizar esta funcion en algun componente usar:
     //import UserAction to getCurrentUser
@@ -55,10 +53,6 @@ class ApiService {
         });
     }
 
-
-
-
-
     //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT) 
     //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
     static login({ username, key }) {
@@ -76,6 +70,42 @@ class ApiService {
                 });
         });
     }
+    static playCard(cardIdx) {
+        return takeAction("playcard", { username: localStorage.getItem("cardgame_account"), player_card_idx: cardIdx });
+    }
+
+    static insert(id,
+        time,
+        dist,
+        speed,
+        alt,
+        hrate,
+        cal,
+        incl,
+        cad,
+        temp) {
+        localStorage.setItem("IDACTIVITY ", id);
+        localStorage.setItem("distancia ", dist);
+        localStorage.setItem("user", localStorage.getItem("user_account"));
+        return takeAction("insert", {
+            activityid: id,
+            username: localStorage.getItem("user_account"),
+            training_time: time,
+            distance: dist,
+            speed: speed,
+            altitude: alt,
+            heart_rate: hrate,
+            calories: cal,
+            incline: incl,
+            cadence: cad,
+            temperature: temp
+        });
+    }
+
+    //uint64_t activityid, name username, uint64_t training_time, double distance, double speed, uint64_t altitude, uint64_t heart_rate, uint64_t calories, uint64_t incline,         
+    // uint64_t cadence, double temperature
+
+
 
 
     //NO Necesitas la key porque leer datos es publico
