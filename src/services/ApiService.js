@@ -125,6 +125,7 @@ class ApiService {
 
     //NO Necesitas la key porque leer datos es publico
     static async getUserByName(username) {
+
         try {
             const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
             const result = await rpc.get_table_rows({
@@ -134,6 +135,24 @@ class ApiService {
                 "table": "users", // name of the table as specified by the contract abi
                 "limit": 1,
                 "lower_bound": username,
+            });
+            return result.rows[0];
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    static async getActivityByName() {
+        const username = localStorage.getItem("user_account");
+        localStorage.setItem("STATE", "entre weeey");
+        try {
+            const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
+            const result = await rpc.get_table_rows({
+                "json": true,
+                "code": process.env.REACT_APP_EOS_CONTRACT_NAME, // contract who owns the table
+                "scope": process.env.REACT_APP_EOS_CONTRACT_NAME, // scope of the table
+                "table": "activities", // name of the table as specified by the contract abi
+                "limit": 6,
+                // "lower_bound": username,
             });
             return result.rows[0];
         } catch (err) {
