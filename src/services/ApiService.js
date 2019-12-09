@@ -154,7 +154,7 @@ class ApiService {
                 "limit": 6,
                 // "lower_bound": username,
             });
-            return result.rows[0];
+            return result.rows;
         } catch (err) {
             console.error(err);
         }

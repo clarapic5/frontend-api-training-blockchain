@@ -19,13 +19,7 @@ class Activity extends Component {
       distance: 0,
       activities: []
     };
-    // Form username, key and just a message to control errors sintaxis
-   // this.state = {
-     // form: {
-       // username: '',
-       // key: '',
-      //  error: '',
-     // },
+    
     
     // Bind
     this.loadActivity = this.loadActivity.bind(this);
@@ -46,32 +40,7 @@ class Activity extends Component {
 
   }
 
-  /*loadActivity() {
-    console.log("EOOO");
-    // Extract `setUser` of `UserAction` and `user.name` of UserReducer from redux
-   // const { setUser, user: { name } } = this.props;
-    // Send request the blockchain by calling the ApiService,
-    // Get the user object and store the `win_count`, `lost_count` and `game_data` object
-    return ApiService.getActivityByName().then(activity => {
-      this.setState({ activityid: activity.activityid });
-      this.setState({ username: activity.username });
-      this.setState({ time: activity.training_time});
-      this.setState({ distance: activity.distance });
-      localStorage.setItem("activityid", activity.activityid);
-      localStorage.setItem("user", activity.username);
-      localStorage.setItem("time",  activity.training_time);
-      localStorage.setItem("distance", activity.distance);
-     
-      /* setUser({
-        win_count: user.win_count,
-        lost_count: user.lost_count,
-        game: user.game_data,
-      });
-      // Set the loading state to false for displaying the app
-      this.setState({ loading: false });
-    });
-  }
-*/
+ 
   //Sends a login transaction to the blockchain
   handleSubmit(event) {
     // Hide data from the url browser
