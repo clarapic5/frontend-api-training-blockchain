@@ -13,10 +13,7 @@ class Activity extends Component {
     super(props);
 
     this.state = {
-      activityid: 0,
-      username: '',
-      time: 0,
-      distance: 0,
+
       activities: []
     };
     
@@ -31,8 +28,8 @@ class Activity extends Component {
   loadActivity= () => {
     return ApiService.getActivityByName()
     .then(data => {
-      console.log(data);
-      this.setState({activities: data.rows});
+     //  console.log(data);
+      this.setState({activities: data});
     })
     .catch(e=>{
       console.error(e);
@@ -50,7 +47,7 @@ class Activity extends Component {
     //const { setUser } = this.props;
 
     // Send a login transaction to the blockchain by calling the ApiService
-    return ApiService.insert(16,1,1,1,1,1,1,1,1,1)
+    return ApiService.insert(17,1,1,1,1,1,1,1,1,1)
       .then(() => {
        // setUser({ name: form.username });  // If it successes, save the username to redux store
       })
@@ -61,9 +58,12 @@ class Activity extends Component {
   }
 
   render() {
-    // Extract data from state
-   // const { error } = this.state;
-
+   // Extract data from state
+   const {activities} = this.state;
+   if (activities != null && activities.length != 0) {
+     console.log("eeeooo");
+     console.log(activities);
+   }
     return (
       <div className="Activity">
         <div className="title">Sports Activity Manager EOS</div>
@@ -71,7 +71,7 @@ class Activity extends Component {
       
           <div className="bottom">
             <Button onClick={this.handleSubmit.bind(this)} type="submit" className="green">
-              {"CONFIRM"}
+              {"PUT"}
             </Button>
           </div>
       

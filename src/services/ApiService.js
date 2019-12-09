@@ -151,7 +151,7 @@ class ApiService {
                 "code": process.env.REACT_APP_EOS_CONTRACT_NAME, // contract who owns the table
                 "scope": process.env.REACT_APP_EOS_CONTRACT_NAME, // scope of the table
                 "table": "activities", // name of the table as specified by the contract abi
-                "limit": 6,
+                "limit": 10,
                 // "lower_bound": username,
             });
             return result.rows;
