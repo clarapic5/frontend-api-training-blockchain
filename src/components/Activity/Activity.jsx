@@ -45,7 +45,7 @@ class Activity extends Component {
     //const { setUser } = this.props;
 
     // Send a login transaction to the blockchain by calling the ApiService
-    return ApiService.insert(16,1,1,1,1,1,1,1,1,1)
+    return ApiService.insert(2,1,1,1,1,1,1,1,1,1)
       .then(() => {
        // setUser({ name: form.username });  // If it successes, save the username to redux store
       })

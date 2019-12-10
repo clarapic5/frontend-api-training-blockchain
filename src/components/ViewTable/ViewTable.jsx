@@ -25,14 +25,15 @@ class ViewTable extends Component {
             })
 
     }
-
-
-
     renderTableData() {
-        return this.state.activities.map((activity, index) => {
+        const userActivities = this.state.activities.filter(activity =>
+            activity.username === localStorage.getItem("user_account"));
+
+        return userActivities.map((activity, index) => {
             const { activityid, username, training_time, distance,
                 speed, altitude, heart_rate, calories, incline,
                 cadence, temperature } = activity //destructuring
+
 
             return (
                 <tr key={activityid}>
