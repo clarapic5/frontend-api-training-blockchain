@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Button } from 'components';
 
 // Services and redux
-import { UserAction } from 'actions';
 import { ApiService } from 'services';
 
 class Activity extends Component {
@@ -13,10 +11,7 @@ class Activity extends Component {
     super(props);
 
     this.state = {
-      activityid: 0,
-      username: '',
-      time: 0,
-      distance: 0,
+
       activities: []
     };
     
@@ -31,8 +26,8 @@ class Activity extends Component {
   loadActivity= () => {
     return ApiService.getActivityByName()
     .then(data => {
-      console.log(data);
-      this.setState({activities: data.rows});
+     //  console.log(data);
+      this.setState({activities: data});
     })
     .catch(e=>{
       console.error(e);
@@ -61,9 +56,12 @@ class Activity extends Component {
   }
 
   render() {
-    // Extract data from state
-   // const { error } = this.state;
-
+   // Extract data from state
+   const {activities} = this.state;
+   if (activities != null && activities.length != 0) {
+     console.log("eeeooo");
+     console.log(activities);
+   }
     return (
       <div className="Activity">
         <div className="title">Sports Activity Manager EOS</div>
@@ -71,7 +69,7 @@ class Activity extends Component {
       
           <div className="bottom">
             <Button onClick={this.handleSubmit.bind(this)} type="submit" className="green">
-              {"CONFIRM"}
+              {"PUT"}
             </Button>
           </div>
       
