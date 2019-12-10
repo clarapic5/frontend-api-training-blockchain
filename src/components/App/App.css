@@ -45,6 +45,7 @@ h1 {
 table {
     width: 100%;
     table-layout: fixed;
+    background-color: rgba(0, 0, 0, 0.37);
 }
 
 .tbl-header {
