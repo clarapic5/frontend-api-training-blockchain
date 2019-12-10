@@ -1,17 +1,17 @@
 import App from './App';
 import Button from './Button';
-import Training from './Training';
+import Menu from './Menu';
 import Login from './Login';
 import UserProfile from './UserProfile';
-import Activity from './Activity';
-import ViewTable from './ViewTable';
+import UploadActivity from './UploadActivity';
+import UserActivities from './UserActivities';
 
 export {
     App,
     Button,
-    Training,
+    Menu,
     Login,
     UserProfile,
-    Activity,
-    ViewTable,
+    UploadActivity,
+    UserActivities,
 }

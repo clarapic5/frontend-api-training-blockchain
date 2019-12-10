@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ApiService } from 'services';
 
-class ViewTable extends Component {
+class UserActivities extends Component {
 
     constructor(props) {
         super(props);
@@ -89,4 +89,4 @@ class ViewTable extends Component {
     }
 }
 
-export default ViewTable;
+export default UserActivities;

@@ -4,7 +4,7 @@ import { Button } from 'components';
 // Services and redux
 import { ApiService } from 'services';
 
-class Activity extends Component {
+class UploadActivity extends Component {
 
   constructor(props) {
 
@@ -63,7 +63,7 @@ class Activity extends Component {
      console.log(activities);
    }
     return (
-      <div className="Activity">
+      <div className="UploadActivity">
         <div className="title">Sports Activity Manager EOS</div>
         <div className="description">Please use the Account Name and Private Key generated in the beginning to log into the system.</div>
       
@@ -88,4 +88,4 @@ class Activity extends Component {
 
 // Export a redux connected component
 //export default connect(mapStateToProps, mapDispatchToProps)(Activity);
-export default Activity;
+export default UploadActivity;
