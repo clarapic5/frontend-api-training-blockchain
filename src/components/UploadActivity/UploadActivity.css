@@ -1,4 +1,4 @@
-.Activity {
+.UploadActivity {
     position: relative;
     margin: 0 auto;
     width: 1366px;
@@ -15,13 +15,13 @@
     transition: all 500ms ease-in-out !important;
 }
 
-.Activity>* {
+.UploadActivity>* {
     margin: 0 auto;
     padding: 0 72px;
     width: 615px;
 }
 
-.Activity .title {
+.UploadActivity .title {
     position: absolute;
     top: -109px;
     width: 507px;
@@ -31,22 +31,22 @@
     color: transparent;
 }
 
-.Activity .description {
+.UploadActivity .description {
     margin-top: 50px;
     margin-bottom: 25px;
     line-height: 1.5em;
 }
 
-.Activity .field {
+.UploadActivity .field {
     margin-bottom: 15px;
 }
 
-.Activity .field label {
+.UploadActivity .field label {
     color: #5e5454;
     text-transform: uppercase;
 }
 
-.Activity .field input {
+.UploadActivity .field input {
     margin: 5px 0;
     padding: 4px 20px 0;
     width: 471.5px;
@@ -58,7 +58,7 @@
     /* https://stackoverflow.com/a/37432260 */
 }
 
-.Activity .field input::placeholder {
+.UploadActivity .field input::placeholder {
     color: #666;
     letter-spacing: 2px;
 }
@@ -70,7 +70,7 @@
     }
 }
 
-.Activity .field input:-webkit-autofill {
+.UploadActivity .field input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
 }

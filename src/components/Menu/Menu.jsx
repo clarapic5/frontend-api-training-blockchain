@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 // Services and redux
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
-import { UserProfile, Activity } from 'components';
-import ViewTable from '../ViewTable/ViewTable';
+import { UserProfile, UploadActivity } from 'components';
+import { UserActivities } from 'components';
 
 
-class Training extends Component {
+class Menu extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
       isPressed: false
-   };
+    };
 
 
     // Bind 
@@ -39,7 +39,7 @@ class Training extends Component {
     //Extract data user from the blockchain calling ApiService
     return ApiService.getUserByName(name).then(user => {
       setUser({
-       
+
       });
     });
   }
@@ -47,11 +47,11 @@ class Training extends Component {
 
   render() {
     // Extract user data from local store
-    const { user: { name} } = this.props;
-  
-    if (this.state.isPressed) return (<section className="Training"><ViewTable /></section>)
+    const { user: { name } } = this.props;
+
+    if (this.state.isPressed) return (<section className="Menu"><UserActivities /></section>)
     else
-      return (<section className="Training">
+      return (<section className="Menu">
         <UserProfile
           name={name}
           changePressed={this.onChangeButtonPressed.bind(this)}
@@ -70,5 +70,5 @@ const mapDispatchToProps = {
 };
 
 // Export a redux connected component
-export default connect(mapStateToProps, mapDispatchToProps)(Training);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
 

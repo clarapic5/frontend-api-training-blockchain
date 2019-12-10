@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Training, Login} from 'components';
+import { Menu, Login } from 'components';
 
 // Services and redux
 import { UserAction } from 'actions';
@@ -16,7 +16,7 @@ class App extends Component {
     // Call 
     this.getCurrentUser();
   }
-  
+
   //Function to get the user from the browser local storage
   getCurrentUser() {
     const { setUser } = this.props;
@@ -27,7 +27,7 @@ class App extends Component {
         setUser({ name: username });
       })
       // To ignore 401 console error
-      .catch(() => {});
+      .catch(() => { });
   }
 
 
@@ -35,13 +35,13 @@ class App extends Component {
     // Extract user data from redux
     const { user: { name } } = this.props;
 
-    // If the username is set in redux, display the Training component
+    // If the username is set in redux, display the Menu component
     // If the username is NOT set in redux, display the Login component
-    
-    if(name) return (<div className="App"><Training /></div>)
-    if (!name) return (<div className="App"><Login/></div> ) 
-    
-    
+
+    if (name) return (<div className="App"><Menu /></div>)
+    if (!name) return (<div className="App"><Login /></div>)
+
+
   }
 
 }
