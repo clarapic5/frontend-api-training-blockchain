@@ -4,6 +4,7 @@ import Training from './Training';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import Activity from './Activity';
+import ViewTable from './ViewTable';
 
 export {
     App,
@@ -12,4 +13,5 @@ export {
     Login,
     UserProfile,
     Activity,
+    ViewTable,
 }

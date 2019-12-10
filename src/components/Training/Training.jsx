@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
 import { UserProfile, Activity } from 'components';
+import ViewTable from '../ViewTable/ViewTable';
 
 
 class Training extends Component {
@@ -48,7 +49,7 @@ class Training extends Component {
     // Extract user data from local store
     const { user: { name} } = this.props;
   
-    if (this.state.isPressed) return (<section className="Training"><Activity /></section>)
+    if (this.state.isPressed) return (<section className="Training"><ViewTable /></section>)
     else
       return (<section className="Training">
         <UserProfile

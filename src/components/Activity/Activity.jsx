@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Button } from 'components';
 
 // Services and redux
-import { UserAction } from 'actions';
 import { ApiService } from 'services';
 
 class Activity extends Component {
@@ -47,7 +45,7 @@ class Activity extends Component {
     //const { setUser } = this.props;
 
     // Send a login transaction to the blockchain by calling the ApiService
-    return ApiService.insert(17,1,1,1,1,1,1,1,1,1)
+    return ApiService.insert(16,1,1,1,1,1,1,1,1,1)
       .then(() => {
        // setUser({ name: form.username });  // If it successes, save the username to redux store
       })
