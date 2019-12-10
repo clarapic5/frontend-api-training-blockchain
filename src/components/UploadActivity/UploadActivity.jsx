@@ -14,26 +14,11 @@ class UploadActivity extends Component {
 
       activities: []
     };
-    
-    
-    // Bind
-    this.loadActivity = this.loadActivity.bind(this);
-    this.loadActivity();
-  //  this.handleChange = this.handleChange.bind(this);
-   // this.handleSubmit = this.handleSubmit.bind(this);
+ 
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  loadActivity= () => {
-    return ApiService.getActivityByName()
-    .then(data => {
-     //  console.log(data);
-      this.setState({activities: data});
-    })
-    .catch(e=>{
-      console.error(e);
-    })
 
-  }
 
  
   //Sends a login transaction to the blockchain
@@ -56,12 +41,6 @@ class UploadActivity extends Component {
   }
 
   render() {
-   // Extract data from state
-   const {activities} = this.state;
-   if (activities != null && activities.length != 0) {
-     console.log("eeeooo");
-     console.log(activities);
-   }
     return (
       <div className="UploadActivity">
         <div className="title">Sports Activity Manager EOS</div>
@@ -77,15 +56,4 @@ class UploadActivity extends Component {
     )
   }
 }
-
-// Map all state to component props (for redux to connect)
-//const mapStateToProps = state => state;
-
-// Map the following action to props
-/*const mapDispatchToProps = {
-  setUser: UserAction.setUser,
-};*/
-
-// Export a redux connected component
-//export default connect(mapStateToProps, mapDispatchToProps)(Activity);
 export default UploadActivity;

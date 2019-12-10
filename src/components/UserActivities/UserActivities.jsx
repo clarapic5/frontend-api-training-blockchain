@@ -14,10 +14,31 @@ class UserActivities extends Component {
         this.loadActivity();
     }
 
+     
     loadActivity = () => {
-        return ApiService.getActivityByName()
+        return ApiService.getAllActivities()
             .then(data => {
-                console.log(data);
+                for (let row of data) {
+                    //Case1
+                    if (row.distance) {
+                        let n = row.distance;
+                        let aux = parseFloat(n).toFixed(2);
+                        row.distance = aux;   
+                    }
+                     //Case2
+                      if (row.speed) {
+                        let n = row.speed;
+                        let aux = parseFloat(n).toFixed(2);
+                        row.speed = aux;
+                    }
+                     //Case3
+                      if (row.temperature) {
+                        let n = row.temperature;
+                        let aux = parseFloat(n).toFixed(2);
+                        row.temperature = aux;
+                    }
+
+                }
                 this.setState({ activities: data });
             })
             .catch(e => {

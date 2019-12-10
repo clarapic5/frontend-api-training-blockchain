@@ -30,8 +30,6 @@ async function takeAction(action, dataValue) {
     }
 }
 
-
-
 class ApiService {
     //AQUI TRABAJAS CON REDUX Y OBTIENES EL ACCOUNT_NAME QUE HAYA EN CHROME GUARDADO
     //Para utilizar esta funcion en algun componente usar:
@@ -56,53 +54,21 @@ class ApiService {
     //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT) 
     //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
     static login({ username, key }) {
-            return new Promise((resolve, reject) => {
-                localStorage.setItem("user_account", username);
-                localStorage.setItem("user_key", key);
-                takeAction("login", { username: username })
-                    .then(() => {
-                        resolve();
-                    })
-                    .catch(err => {
-                        localStorage.removeItem("user_account");
-                        localStorage.removeItem("user_key");
-                        reject(err);
-                    });
-            });
-        }
-        /*static playCard(cardIdx) {
-        return takeAction("playcard", { username: localStorage.getItem("cardgame_account"), player_card_idx: cardIdx });
-    }*/
-        /*
-            static insert({ id, time, dist, speed, alt, hrate, cal, incl, cad, temp }) {
-                return new Promise((resolve, reject) => {
-                    localStorage.setItem("IDACTIVITY ", id);
-                    localStorage.setItem("distancia ", dist);
-                    localStorage.setItem("user", localStorage.getItem("user_account"));
-                    localStorage.setItem("STATE", "none");
-                    takeAction("insert", {
-                            activityid: 2,
-                            username: localStorage.getItem("user_account"),
-                            training_time: 1,
-                            distance: 1.0,
-                            speed: 1.0,
-                            altitude: 1,
-                            heart_rate: 1,
-                            calories: 1,
-                            incline: 1,
-                            cadence: 1,
-                            temperature: 1.0
-                        })
-                        .then(() => {
-                            localStorage.setItem("STATE", "yes");
-                            resolve();
-                        })
-                        .catch(err => {
-                            localStorage.setItem("STATE", "no");
-                            reject(err);
-                        });
+        return new Promise((resolve, reject) => {
+            localStorage.setItem("user_account", username);
+            localStorage.setItem("user_key", key);
+            takeAction("login", { username: username })
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    localStorage.removeItem("user_account");
+                    localStorage.removeItem("user_key");
+                    reject(err);
                 });
-            }*/
+        });
+    }
+
 
     static insert(id, time, dist, speed, alt, hrate, cal, incl, cad, temp) {
         localStorage.setItem("IDACTIVITY ", id);
@@ -141,7 +107,7 @@ class ApiService {
             console.error(err);
         }
     }
-    static async getActivityByName() {
+    static async getAllActivities() {
         const username = localStorage.getItem("user_account");
         localStorage.setItem("STATE", "entre weeey");
         try {
