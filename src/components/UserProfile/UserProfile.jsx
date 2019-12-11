@@ -7,12 +7,15 @@ class UserProfile extends Component {
     super(props);
 
     this.state = {
-      isPressed: false
+      isPressed: false,
     }
   }
 
   isButtonImportClicked() {
     this.props.changePressed(this.state.isPressed);
+  }
+  isButtonActivitiesClicked() {
+    this.props.changeActivityPressed(this.state.isPressed);
   }
 
   render() {
@@ -20,7 +23,7 @@ class UserProfile extends Component {
     const { name } = this.props;
     return (
       <div className="UserProfile">
-        <div className="title">Elemental Battles - powered by EOSIO</div>
+        <div className="title">Sports Activity Manager EOS</div>
 
         <div className="welcome">
           <span>WELCOME</span>
@@ -33,6 +36,10 @@ class UserProfile extends Component {
         <div className="buttons">
           <Button onClick={this.isButtonImportClicked.bind(this)} className="green">IMPORT</Button>
         </div>
+        <div className="buttons">
+          <Button onClick={this.isButtonActivitiesClicked.bind(this)} className="green">MY ACTIVITIES</Button>
+        </div>
+
       </div>
     )
   }

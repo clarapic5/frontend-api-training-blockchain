@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// Services and redux
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
 import { UserProfile, UploadActivity } from 'components';
@@ -13,14 +12,11 @@ class Menu extends Component {
     super(props);
 
     this.state = {
-      isPressed: false
+      isPressed: false,
+      isActivityPressed: false
     };
 
-
-    // Bind 
     this.loadUser = this.loadUser.bind(this);
-    //this.onChangeIsPressed = this.onChangeIsPressed.bind(this);
-    // Call
     this.loadUser();
   }
 
@@ -30,16 +26,21 @@ class Menu extends Component {
     });
   }
 
+  
+  onChangeActivityButtonPressed() {
+    this.setState({
+      isActivityPressed: true
+    });
+  }
+
 
   //Read json user
   loadUser() {
     // Extract setUser from UserActrion
     const { setUser, user: { name } } = this.props;
-
     //Extract data user from the blockchain calling ApiService
     return ApiService.getUserByName(name).then(user => {
       setUser({
-
       });
     });
   }
@@ -49,12 +50,14 @@ class Menu extends Component {
     // Extract user data from local store
     const { user: { name } } = this.props;
 
-    if (this.state.isPressed) return (<section className="Menu"><UserActivities /></section>)
+    if (this.state.isPressed) return (<section className="Menu"><UploadActivity/></section>)
+    if (this.state.isActivityPressed) return (<UserActivities/> )
     else
       return (<section className="Menu">
         <UserProfile
           name={name}
           changePressed={this.onChangeButtonPressed.bind(this)}
+          changeActivityPressed = {this.onChangeActivityButtonPressed.bind(this)}
         />
       </section>)
   }
