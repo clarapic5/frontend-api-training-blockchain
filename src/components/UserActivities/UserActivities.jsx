@@ -60,15 +60,15 @@ class UserActivities extends Component {
                 <tr key={activityid}>
                     <td>{activityid}</td>
                     <td>{username}</td>
-                    <td>{training_time}</td>
-                    <td>{distance}</td>
-                    <td>{speed}</td>
-                    <td>{altitude}</td>
-                    <td>{heart_rate}</td>
-                    <td>{calories}</td>
-                    <td>{incline}</td>
-                    <td>{cadence}</td>
-                    <td>{temperature}</td>
+                    <td>{training_time} sec</td>
+                    <td>{distance} km </td>
+                    <td>{speed} km/h</td>
+                    <td>{altitude} m</td>
+                    <td>{heart_rate} bpm</td>
+                    <td>{calories} kcal</td>
+                    <td>{incline} %</td>
+                    <td>{cadence} rpm</td>
+                    <td>{temperature} °C</td>
                 </tr>
             )
         })
@@ -79,6 +79,7 @@ class UserActivities extends Component {
             <section>
                 <h1>MY ACTIVITIES</h1>
                 <div class="tbl-header">
+                <div class="title">Sports Activity Manager EOS</div>
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
