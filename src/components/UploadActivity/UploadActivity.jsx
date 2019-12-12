@@ -5,58 +5,38 @@ import { Button } from 'components';
 
 class UploadActivity extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      file: null,
-      activities: []
-    }
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  onFormSubmit(e) {
-    e.preventDefault() // Stop form submit
-    this.fileUpload(this.state.file).then((response) => {
-      console.log(response.data);
-    })
-  }
-  onChange(e) {
-    this.setState({ file: e.target.files[0] })
-  }
-  fileUpload(file) {
-    const url = 'http://example.com/file-upload';
-    const formData = new FormData();
-    formData.append('file', file)
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    }
-    return post(url, formData, config)
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    return ApiService.insert(31, 1, 1, 1, 1, 1, 1, 1, 1, 1)
-      .catch(err => {
-        localStorage.setItem("error", err);
+      userList: []
+    };
+   }
+    
+   componentWillMount() {
+    axios.get('https://api.myjson.com/bins/asc4k') // JSON File Path
+      .then( response => {
+        this.setState({
+        userList: response.data
       });
-  }
-
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   }
 
   render() {
+    const usersList = this.state.userList;
+    console.log(usersList);
+    console.log("mee he ejecutadoo");
     return (
       <div className="UploadActivity">
         <div className="title">Sports Activity Manager EOS</div>
         <div className="description">Please select the file .FIT to import</div>
-        <form name="form" onSubmit={this.onFormSubmit}>
-          <input type="file" onChange={this.onChange} />
+        <form name="form" >
+          <input type="file" />
           <button type="submit">Upload</button>
           <div className="bottom">
-            <Button onClick={this.handleSubmit.bind(this)} type="submit" className="green">
+            <Button  type="submit" className="green">
               {"PUT"}
             </Button>
           </div>
