@@ -1,43 +1,51 @@
 import React, { Component } from 'react';
-import { Button } from 'components';
 import { ApiService } from 'services';
+import axios, { post } from 'axios';
+import { Button } from 'components';
 
 class UploadActivity extends Component {
 
-  constructor(props) {
-
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      activities: []
+      userList: []
     };
- 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-
-
-  handleSubmit(event) {
-    event.preventDefault();
+   }
     
-    return ApiService.insert(2,1,1,1,1,1,1,1,1,1)
-      .catch(err => {
-        localStorage.setItem("error", err);
+   componentWillMount() {
+    axios.get('https://api.myjson.com/bins/asc4k') // JSON File Path
+      .then( response => {
+        this.setState({
+        userList: response.data
       });
-  }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   }
 
   render() {
+    const usersList = this.state.userList;
+    console.log(usersList);
+    console.log("mee he ejecutadoo");
     return (
       <div className="UploadActivity">
         <div className="title">Sports Activity Manager EOS</div>
-        <div className="description">Please use the Account Name and Private Key generated in the beginning to log into the system.</div>
+        <div className="description">Please select the file .FIT to import</div>
+        <form name="form" >
+          <input type="file" />
+          <button type="submit">Upload</button>
           <div className="bottom">
-            <Button onClick={this.handleSubmit.bind(this)} type="submit" className="green">
+            <Button  type="submit" className="green">
               {"PUT"}
             </Button>
           </div>
-      
-      </div>
-    )
-  }
-}
-export default UploadActivity;
+        </form>
+        </div>
+        )
+      }
+    }
+    
+    
+    
+export default UploadActivity
