@@ -31,7 +31,7 @@ class UploadActivity extends Component {
 			const data = new FormData();
 			data.append("image", file, file.name);
 			this.setState({
-				extension: file.lastModified + '-' + file.name
+				extension: file.name
 			})
 			// Make an AJAX upload request using Axios
 			axios.post(BASE_URL + 'upload', data)
@@ -47,10 +47,10 @@ class UploadActivity extends Component {
 	}
 
 	componentWillMount() {
-		/*	const ext = this.state.extension;
+			const ext = this.state.extension;
 			console.log(ext);
 			console.log(BASE_URL + 'uploads/' + ext);
-			let url = 'https://api.myjson.com/bins/asc4k';
+			let url = BASE_URL + 'uploads/' + ext;
 			axios.get(url) // JSON File Path
 				.then(response => {
 					this.setState({
@@ -59,7 +59,7 @@ class UploadActivity extends Component {
 				})
 				.catch(function (error) {
 					console.log(error);
-				});*/
+				});
 		
 		// Once all the files are uploaded 
 	}
