@@ -1,0 +1,12 @@
+{
+  "activityid": 5,
+  "training_time": 300,
+  "distance": 90,
+  "speed": 0,
+  "altitude": 10,
+  "heart_rate": 230,
+  "calories": 190,
+  "incline": 3,
+  "cadence": 2,
+  "temperature": 10.5
+}

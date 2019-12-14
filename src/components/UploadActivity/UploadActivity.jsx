@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'components';
 import { ApiService } from 'services';
 import axios from 'axios';
 
@@ -39,6 +40,8 @@ class UploadActivity extends Component {
 			axios.post(BASE_URL + 'upload', data)
 				.then(response => {
 					this.setState({ fileUrl: [response.data.fileUrls, ...this.state.fileUrls] });
+					//Call
+					this.componentWillMount();
 				})
 		});
 
@@ -58,6 +61,8 @@ class UploadActivity extends Component {
 				this.setState({
 					activities: response.data
 				});
+				//Call
+				this.handleSubmit();
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -67,21 +72,22 @@ class UploadActivity extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault();
+		//event.preventDefault();
+		console.log("submiiiit!!");
 		const activities = this.state.activities;
 		console.log(activities);
 		console.log(activities.activityid);
 		return ApiService.insert
-		(activities.activityid, 
-			activities.training_time, 
-            activities.distance, 
-			activities.speed, 
-			activities.altitude, 
-			activities.heart_rate, 
-			activities.calories, 
-			activities.incline, 
-			activities.cadence, 
-			activities.temperature)
+			(activities.activityid,
+				activities.training_time,
+				activities.distance,
+				activities.speed,
+				activities.altitude,
+				activities.heart_rate,
+				activities.calories,
+				activities.incline,
+				activities.cadence,
+				activities.temperature)
 			.then(response => {
 				console.log("success!!");
 			})
@@ -92,40 +98,80 @@ class UploadActivity extends Component {
 
 	render() {
 		return (
-			<div>
-				<br />
-				<div className="col-sm-12">
-					<h1>Image Uploader</h1><hr />
+			<div className="UploadActivity">
+				<div className="title">Sports Activity Manager EOS</div>
+				<div className="description">Please select the file .FIT to import</div>
+				<form name="form" >
 					<div className="col-sm-4">
-						<input className="form-control " type="file" onChange={this.selectFiles} multiple />
+						<input type="file" name="file" onChange={this.selectFiles} />
 					</div>
 					{this.state.message ? <p className="text-info">{this.state.message}</p> : ''}
-					<br /><br /><br />
+				
 					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.uploadFiles}>Submit</button>
+						<div className="bottom">
+							<br /><br /><br /><br /><br /><br />
+							<Button className="btn btn-primary" value="Submit" className="green" onClick={this.uploadFiles}>
+								{"SUMBIT"}
+							</Button>
+						</div>
 					</div>
-					<br /><br /><br />
-					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.componentWillMount}>Mount</button>
+				<br /><br /><br /><br /><hr /><br />
+					<div className="bottom">
+						<Button type="submit" className="green">
+							{"Back"}
+						</Button>
 					</div>
-					<br /><br /><br />
-					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.handleSubmit}>Handler</button>
-					</div>
-				</div>
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><hr /><br />
-				<div className="row col-lg-12">
-					{
-						this.state.fileUrls.map((url, i) => (
-							<div className="col-lg-2" key={i}>
-								<img src={BASE_URL + url} className="img-rounded img-responsive" alt="not available" /><br />
-							</div>
-						))
-					}
-				</div>
+				</form>
 			</div>
-		);
+		)
 	}
 }
+
+
+
+//render() {
+
+
+
+
+
+
+
+/*return (
+	<div>
+		<br />
+		<div className="col-sm-12">
+			<h1>Image Uploader</h1><hr />
+			<div className="col-sm-4">
+				<input className="form-control " type="file" onChange={this.selectFiles} multiple />
+			</div>
+			{this.state.message ? <p className="text-info">{this.state.message}</p> : ''}
+			<br /><br /><br />
+			<div className="col-sm-4">
+				<button className="btn btn-primary" value="Submit" onClick={this.uploadFiles}>Submit</button>
+			</div>
+			<br /><br /><br />
+			<div className="col-sm-4">
+				<button className="btn btn-primary" value="Submit" onClick={this.componentWillMount}>Mount</button>
+			</div>
+			<br /><br /><br />
+			<div className="col-sm-4">
+				<button className="btn btn-primary" value="Submit" onClick={this.handleSubmit}>Handler</button>
+			</div>
+		</div>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><hr /><br />
+		<div className="row col-lg-12">
+			{
+				this.state.fileUrls.map((url, i) => (
+					<div className="col-lg-2" key={i}>
+						<img src={BASE_URL + url} className="img-rounded img-responsive" alt="not available" /><br />
+					</div>
+				))
+			}
+		</div>
+	</div>
+);
+}*/
+//}
 
 export default UploadActivity; 			
