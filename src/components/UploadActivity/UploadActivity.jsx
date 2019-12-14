@@ -7,33 +7,31 @@ class UploadActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        	images: [],
-        	imageUrls: [],
+        	files: [],
+        	fileUrls: [],
         	message: ''
         }
     }
 
     selectFiles = (event) => {
-    	let images = [];
+    	let files = [];
     	for (var i = 0; i < event.target.files.length; i++) {
-            images[i] = event.target.files.item(i);
+            files[i] = event.target.files.item(i);
         }
-	   // images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|gif)$/))
-	    images = images.filter(image => image.name.match(/\.(json)$/))
-        let message = `${images.length} valid image(s) selected`
-        this.setState({ images, message })
+	    files = files.filter(image => image.name.match(/\.(json)$/))
+        let message = `${files.length} valid file(s) selected`
+        this.setState({ files, message })
     }
 
-    uploadImages = () => {
-    
-    	const uploaders = this.state.images.map(image => {
+    uploadFiles = () => {
+    	const uploaders = this.state.files.map(image => {
 		    const data = new FormData();
 		    data.append("image", image, image.name);
 		    
 	    	// Make an AJAX upload request using Axios
 	    	return axios.post(BASE_URL + 'upload', data)
 	    	.then(response => {
-				this.setState({imageUrl: [response.data.imageUrls, ...this.state.imageUrls]});
+				this.setState({imageUrl: [response.data.fileUrls, ...this.state.fileUrls]});
 			})
 		});
 
@@ -56,13 +54,13 @@ class UploadActivity extends Component {
 		        	{ this.state.message? <p className="text-info">{this.state.message}</p>: ''}
 		        	<br/><br/><br/>
 		        	<div className="col-sm-4">
-		            	<button className="btn btn-primary" value="Submit" onClick={this.uploadImages}>Submit</button>
+		            	<button className="btn btn-primary" value="Submit" onClick={this.uploadFiles}>Submit</button>
 		        	</div>
 	            </div>
 	            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><hr/><br/>
 	            <div className="row col-lg-12">
 		        	{ 
-			          	this.state.imageUrls.map((url, i) => (
+			          	this.state.fileUrls.map((url, i) => (
 				          		<div className="col-lg-2" key={i}>
 				          			<img src={BASE_URL + url} className="img-rounded img-responsive" alt="not available"/><br/>
 				          		</div>
