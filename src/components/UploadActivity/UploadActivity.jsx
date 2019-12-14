@@ -18,20 +18,20 @@ class UploadActivity extends Component {
     	for (var i = 0; i < event.target.files.length; i++) {
             files[i] = event.target.files.item(i);
         }
-	    files = files.filter(image => image.name.match(/\.(json)$/))
+	    files = files.filter(file=> file.name.match(/\.(json)$/))
         let message = `${files.length} valid file(s) selected`
         this.setState({ files, message })
     }
 
     uploadFiles = () => {
-    	const uploaders = this.state.files.map(image => {
+    	const uploaders = this.state.files.map(file => {
 		    const data = new FormData();
-		    data.append("image", image, image.name);
+		    data.append("image", file, file.name);
 		    
 	    	// Make an AJAX upload request using Axios
 	    	return axios.post(BASE_URL + 'upload', data)
 	    	.then(response => {
-				this.setState({imageUrl: [response.data.fileUrls, ...this.state.fileUrls]});
+				this.setState({fileUrl: [response.data.fileUrls, ...this.state.fileUrls]});
 			})
 		});
 
