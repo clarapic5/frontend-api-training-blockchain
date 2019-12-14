@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ApiService } from 'services';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:5000/';
@@ -14,6 +15,7 @@ class UploadActivity extends Component {
 			message: ''
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	selectFiles = (event) => {
@@ -47,21 +49,45 @@ class UploadActivity extends Component {
 	}
 
 	componentWillMount() {
-			const ext = this.state.extension;
-			console.log(ext);
-			console.log(BASE_URL + 'uploads/' + ext);
-			let url = BASE_URL + 'uploads/' + ext;
-			axios.get(url) // JSON File Path
-				.then(response => {
-					this.setState({
-						activities: response.data
-					});
-				})
-				.catch(function (error) {
-					console.log(error);
+		const ext = this.state.extension;
+		console.log(ext);
+		console.log(BASE_URL + 'uploads/' + ext);
+		let url = BASE_URL + 'uploads/' + ext;
+		axios.get(url) // JSON File Path
+			.then(response => {
+				this.setState({
+					activities: response.data
 				});
-		
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+
 		// Once all the files are uploaded 
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+		const activities = this.state.activities;
+		console.log(activities);
+		console.log(activities.activityid);
+		return ApiService.insert
+		(activities.activityid, 
+			activities.training_time, 
+            activities.distance, 
+			activities.speed, 
+			activities.altitude, 
+			activities.heart_rate, 
+			activities.calories, 
+			activities.incline, 
+			activities.cadence, 
+			activities.temperature)
+			.then(response => {
+				console.log("success!!");
+			})
+			.catch(err => {
+				localStorage.setItem("error", err);
+			});
 	}
 
 	render() {
@@ -81,6 +107,10 @@ class UploadActivity extends Component {
 					<br /><br /><br />
 					<div className="col-sm-4">
 						<button className="btn btn-primary" value="Submit" onClick={this.componentWillMount}>Mount</button>
+					</div>
+					<br /><br /><br />
+					<div className="col-sm-4">
+						<button className="btn btn-primary" value="Submit" onClick={this.handleSubmit}>Handler</button>
 					</div>
 				</div>
 				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><hr /><br />
