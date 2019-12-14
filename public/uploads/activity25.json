@@ -1,8 +1,8 @@
 {
-  "activityid": 5,
-  "training_time": 300,
-  "distance": 90,
-  "speed": 0,
+  "activityid": 26,
+  "training_time": 500,
+  "distance": 30,
+  "speed": 8,
   "altitude": 10,
   "heart_rate": 230,
   "calories": 190,

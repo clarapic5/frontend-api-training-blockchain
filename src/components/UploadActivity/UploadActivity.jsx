@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from 'components';
 import { ApiService } from 'services';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:5000/';
+const MySwal = withReactContent(Swal);
 
 class UploadActivity extends Component {
 	constructor(props) {
@@ -17,6 +20,7 @@ class UploadActivity extends Component {
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+
 	}
 
 	selectFiles = (event) => {
@@ -72,7 +76,7 @@ class UploadActivity extends Component {
 	}
 
 	handleSubmit(event) {
-		//event.preventDefault();
+		
 		console.log("submiiiit!!");
 		const activities = this.state.activities;
 		console.log(activities);
@@ -90,6 +94,13 @@ class UploadActivity extends Component {
 				activities.temperature)
 			.then(response => {
 				console.log("success!!");
+			 
+				MySwal.fire(
+					'Success!',
+					'The transaction has been realized',
+					'success'
+				  )
+		
 			})
 			.catch(err => {
 				localStorage.setItem("error", err);
