@@ -149,43 +149,39 @@ class UploadActivity extends Component {
 
 	render() {
 
-
-
-
-
-
-
 		return (
-			<div>
-				<br />
-				<div className="col-sm-12">
-					<h1>Image Uploader</h1><hr />
-					<div className="col-sm-4">
-						<input className="form-control " type="file" onChange={this.selectFiles} multiple />
+			<div className="UploadActivity">
+				<div>
+					<br />
+					<div className="col-sm-12">
+						<div className="title">Sports Activity Manager EOS</div>
+						<div className="description">Please select the file .FIT to import</div>
+						<div className="col-sm-4">
+							<input className="form-control " type="file" onChange={this.selectFiles} multiple />
+						</div>
+						{this.state.message ? <p className="text-info">{this.state.message}</p> : ''}
+						<br /><br /><br />
+						<div className="col-sm-4">
+							<Button className="btn btn-primary" value="Submit" className="green" onClick={this.uploadFiles}>
+								{"SUMBIT"}
+							</Button>
+						</div>
 					</div>
-					{this.state.message ? <p className="text-info">{this.state.message}</p> : ''}
-					<br /><br /><br />
-					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.uploadFiles}>Submit</button>
+					<br /><br /><br /><br /><hr /><br />
+					<div className="bottom">
+						<Button type="submit" className="green">
+							{"Back"}
+						</Button>
 					</div>
-					<br /><br /><br />
-					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.componentWillMount}>Mount</button>
+					<div className="row col-lg-12">
+						{
+							this.state.fileUrls.map((url, i) => (
+								<div className="col-lg-2" key={i}>
+									<img src={BASE_URL + url} className="img-rounded img-responsive" alt="not available" /><br />
+								</div>
+							))
+						}
 					</div>
-					<br /><br /><br />
-					<div className="col-sm-4">
-						<button className="btn btn-primary" value="Submit" onClick={this.handleSubmit}>Handler</button>
-					</div>
-				</div>
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><hr /><br />
-				<div className="row col-lg-12">
-					{
-						this.state.fileUrls.map((url, i) => (
-							<div className="col-lg-2" key={i}>
-								<img src={BASE_URL + url} className="img-rounded img-responsive" alt="not available" /><br />
-							</div>
-						))
-					}
 				</div>
 			</div>
 		);
