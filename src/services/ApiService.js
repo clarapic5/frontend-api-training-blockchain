@@ -71,21 +71,29 @@ class ApiService {
 
 
     static insert(id, time, dist, speed, alt, hrate, cal, incl, cad, temp) {
-        localStorage.setItem("IDACTIVITY ", id);
-        localStorage.setItem("distancia ", dist);
-        localStorage.setItem("user", localStorage.getItem("user_account"));
-        return takeAction("insert", {
-            activityid: id,
-            username: localStorage.getItem("user_account"),
-            training_time: time,
-            distance: dist,
-            speed: speed,
-            altitude: alt,
-            heart_rate: hrate,
-            calories: cal,
-            incline: incl,
-            cadence: cad,
-            temperature: temp
+        return new Promise((resolve, reject) => {
+            localStorage.setItem("IDACTIVITY ", id);
+            localStorage.setItem("distancia ", dist);
+            localStorage.setItem("user", localStorage.getItem("user_account"));
+            return takeAction("insert", {
+                    activityid: id,
+                    username: localStorage.getItem("user_account"),
+                    training_time: time,
+                    distance: dist,
+                    speed: speed,
+                    altitude: alt,
+                    heart_rate: hrate,
+                    calories: cal,
+                    incline: incl,
+                    cadence: cad,
+                    temperature: temp
+                })
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    reject(err);
+                });
         });
     }
 

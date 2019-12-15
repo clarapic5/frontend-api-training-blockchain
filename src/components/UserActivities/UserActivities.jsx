@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, App } from 'components';
 import { ApiService } from 'services';
 
 class UserActivities extends Component {
@@ -7,14 +8,16 @@ class UserActivities extends Component {
         super(props);
 
         this.state = {
-            activities: []
+            activities: [],
+            goBack: false
         };
         // Bind
         this.loadActivity = this.loadActivity.bind(this);
+        this.goBack = this.goBack.bind(this);
         this.loadActivity();
     }
 
-     
+
     loadActivity = () => {
         return ApiService.getAllActivities()
             .then(data => {
@@ -23,16 +26,16 @@ class UserActivities extends Component {
                     if (row.distance) {
                         let n = row.distance;
                         let aux = parseFloat(n).toFixed(2);
-                        row.distance = aux;   
+                        row.distance = aux;
                     }
-                     //Case2
-                      if (row.speed) {
+                    //Case2
+                    if (row.speed) {
                         let n = row.speed;
                         let aux = parseFloat(n).toFixed(2);
                         row.speed = aux;
                     }
-                     //Case3
-                      if (row.temperature) {
+                    //Case3
+                    if (row.temperature) {
                         let n = row.temperature;
                         let aux = parseFloat(n).toFixed(2);
                         row.temperature = aux;
@@ -74,12 +77,20 @@ class UserActivities extends Component {
         })
     }
 
+    goBack() {
+        this.setState({
+            goBack: true
+        });
+    }
+
     render() {
+        const goBack = this.state.goBack;
+        if (goBack) return <App />
         return (
             <section>
                 <h1>MY ACTIVITIES</h1>
                 <div class="tbl-header">
-                <div class="title">Sports Activity Manager EOS</div>
+                    <div class="title">Sports Activity Manager EOS</div>
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
@@ -104,6 +115,12 @@ class UserActivities extends Component {
                             {this.renderTableData()}
                         </tbody>
                     </table>
+                </div>
+                <br /><br /><br /><br /><hr /><br />
+                <div className="bottom">
+                    <Button type="submit" className="green" onClick={this.goBack}>
+                        {"Back"}
+                    </Button>
                 </div>
             </section>
 
