@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'components';
+import { Button, App } from 'components';
 import { ApiService } from 'services';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -16,10 +16,12 @@ class UploadActivity extends Component {
 			fileUrls: [],
 			extension: ' ',
 			activities: [],
+			goBack: false,
 			message: ''
 		}
 		this.uploadFiles = this.uploadFiles.bind(this);
 		this.showAlert = this.showAlert.bind(this);
+		this.goBack = this.goBack.bind(this);
 
 	}
 
@@ -66,7 +68,6 @@ class UploadActivity extends Component {
 			.then(response => {
 				this.setState({
 					activities: response.data,
-					isUpdated: true
 				});
 				//Call
 				this.handleSubmit();
@@ -111,6 +112,12 @@ class UploadActivity extends Component {
 		)
 	}
 
+	goBack() {
+		this.setState({
+			goBack: true
+		});
+	}
+
 	/*render() {
 		return (
 			<div className="UploadActivity">
@@ -149,6 +156,8 @@ class UploadActivity extends Component {
 
 	render() {
 
+		const goBack = this.state.goBack;
+		if (goBack) return <App/>
 		return (
 			<div className="UploadActivity">
 				<div>
@@ -169,7 +178,7 @@ class UploadActivity extends Component {
 					</div>
 					<br /><br /><br /><br /><hr /><br />
 					<div className="bottom">
-						<Button type="submit" className="green">
+						<Button type="submit" className="green" onClick={this.goBack}>
 							{"Back"}
 						</Button>
 					</div>
