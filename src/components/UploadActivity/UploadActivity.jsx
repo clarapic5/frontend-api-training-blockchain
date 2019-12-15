@@ -20,7 +20,8 @@ class UploadActivity extends Component {
 			message: ''
 		}
 		this.uploadFiles = this.uploadFiles.bind(this);
-		this.showAlert = this.showAlert.bind(this);
+		this.showAlertSuccess = this.showAlertSuccess.bind(this);
+		this.showAlertFailure = this.showAlertFailure.bind(this);
 		this.goBack = this.goBack.bind(this);
 
 	}
@@ -46,7 +47,7 @@ class UploadActivity extends Component {
 			axios.post(BASE_URL + 'upload', data)
 				.then(response => {
 					this.setState({ fileUrl: [response.data.fileUrls, ...this.state.fileUrls] });
-					this.showAlert();
+					//this.showAlertSuccess();
 					//Call
 					setTimeout(this.componentWillMount(), 60000)
 
@@ -54,9 +55,14 @@ class UploadActivity extends Component {
 		});
 
 		// Once all the files are uploaded 
-		axios.all(uploaders).then(() => {
+		axios.all(uploaders)
+		.then(() => {
 			console.log('done');
-		}).catch(err => alert(err.message));
+		   })
+		   .catch(err => 
+			//alert(err.message)
+			this.showAlertFailure()
+		   )
 	}
 
 	componentWillMount() {
@@ -96,15 +102,16 @@ class UploadActivity extends Component {
 				activities.cadence,
 				activities.temperature)
 			.then(response => {
+				this.showAlertSuccess();
 				console.log("success!!");
 			})
 			.catch(err => {
 				localStorage.setItem("error", err);
+				this.showAlertFailure();
 			});
 	}
 
-	showAlert() {
-		console.log("eeii wakalole");
+	showAlertSuccess() {
 		MySwal.fire(
 			'Success!',
 			'The transaction has been realized',
@@ -112,6 +119,13 @@ class UploadActivity extends Component {
 		)
 	}
 
+	showAlertFailure() {
+		MySwal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'Something went wrong!',
+		  })
+	}
 	goBack() {
 		this.setState({
 			goBack: true
@@ -135,7 +149,7 @@ class UploadActivity extends Component {
 							<Button className="btn btn-primary" value="Submit" className="green" onClick={this.uploadFiles}>
 								{"SUMBIT"}
 							</Button>
-							<Button className="btn btn-primary" value="Submit" className="green" onClick={this.showAlert}>
+							<Button className="btn btn-primary" value="Submit" className="green" onClick={this.showAlertSuccess}>
 								{"ALERT"}
 							</Button>
 						</div>
@@ -157,7 +171,7 @@ class UploadActivity extends Component {
 	render() {
 
 		const goBack = this.state.goBack;
-		if (goBack) return <App/>
+		if (goBack) return <App />
 		return (
 			<div className="UploadActivity">
 				<div>
