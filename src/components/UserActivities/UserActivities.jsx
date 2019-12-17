@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, App } from 'components';
+import { Button, App, ActivityView } from 'components';
 import { ApiService } from 'services';
 
 class UserActivities extends Component {
@@ -9,11 +9,14 @@ class UserActivities extends Component {
 
         this.state = {
             activities: [],
+            activitySelected: null,
+            clickOn: false,
             goBack: false
         };
         // Bind
         this.loadActivity = this.loadActivity.bind(this);
         this.goBack = this.goBack.bind(this);
+        this.viewActivity = this.viewActivity.bind(this);
         this.loadActivity();
     }
 
@@ -72,9 +75,19 @@ class UserActivities extends Component {
                     <td>{incline} %</td>
                     <td>{cadence} rpm</td>
                     <td>{temperature} °C</td>
-                </tr>
+                    <th value="VIEW" onClick={() => this.viewActivity(activity)}>View</th>
+                </tr> 
             )
         })
+    }
+
+    viewActivity(activity) {
+        alert(activity.activityid);
+        console.log(activity.activityid);
+        this.setState({
+            clickOn: true,
+            activitySelected: activity
+        });
     }
 
     goBack() {
@@ -83,9 +96,12 @@ class UserActivities extends Component {
         });
     }
 
+
     render() {
         const goBack = this.state.goBack;
+        const clickOn = this.state.clickOn;
         if (goBack) return <App />
+        if (clickOn) return (<ActivityView/> )
         return (
             <section>
                 <h1>MY ACTIVITIES</h1>
@@ -105,6 +121,7 @@ class UserActivities extends Component {
                                 <th>Incline</th>
                                 <th>Cadence</th>
                                 <th>Temperature</th>
+                                <th></th>
                             </tr>
                         </thead>
                     </table>
