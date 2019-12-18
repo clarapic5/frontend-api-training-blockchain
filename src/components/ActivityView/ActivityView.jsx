@@ -24,15 +24,58 @@ class ActivityView extends Component {
     return (
       <div className="ActivityView">
         <div className="title">Sports Activity Manager EOS</div>
-
-        <div className="welcome">
-          <span>ACTIVITY</span>
-        </div>
         <div className="username">
           <span>idactivity</span>
         </div>
         <div className="description">This is the view of your activity</div>
-
+        <table>
+          <thead>
+            <tr>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+              <td >
+                <div className="username">
+                  <span>43,3 bpm</span>
+                </div>
+              </td>
+            </tr>
+          </thead>
+        </table>
       </div>
     )
   }
