@@ -1,9 +1,9 @@
 .ActivityView {
+    background-image: url("./images/App_background.jpg");
     position: relative;
     margin: 0 auto;
     width: 1366px;
     height: 768px;
-    background: url("./images/popup_bg.png") center no-repeat;
     background-size: 615px;
     color: #5e5454;
     font-size: 14.5px;

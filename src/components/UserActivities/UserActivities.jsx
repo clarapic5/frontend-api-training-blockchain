@@ -76,7 +76,7 @@ class UserActivities extends Component {
                     <td>{cadence} rpm</td>
                     <td>{temperature} °C</td>
                     <th value="VIEW" onClick={() => this.viewActivity(activity)}>View</th>
-                </tr> 
+                </tr>
             )
         })
     }
@@ -101,45 +101,50 @@ class UserActivities extends Component {
         const goBack = this.state.goBack;
         const clickOn = this.state.clickOn;
         if (goBack) return <App />
-        if (clickOn) return (<ActivityView/> )
+        if (clickOn) return (<ActivityView />)
         return (
-            <section>
-                <h1>MY ACTIVITIES</h1>
-                <div class="tbl-header">
-                    <div class="title">Sports Activity Manager EOS</div>
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                            <tr>
-                                <th>Activityid</th>
-                                <th>Username</th>
-                                <th>Time</th>
-                                <th>Distance</th>
-                                <th>Speed</th>
-                                <th>Altitude</th>
-                                <th>Heart rate</th>
-                                <th>Calories</th>
-                                <th>Incline</th>
-                                <th>Cadence</th>
-                                <th>Temperature</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="tbl-content">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
-                    </table>
-                </div>
-                <br /><br /><br /><br /><hr /><br />
-                <div className="bottom">
-                    <Button type="submit" className="green" onClick={this.goBack}>
-                        {"Back"}
-                    </Button>
-                </div>
-            </section>
+            <div class="App">
+                <section class="Menu">
+                    <div class="App"></div>
+                    <section>
+                        <h1>MY ACTIVITIES</h1>
+                        <div class="tbl-header">
+                            <div class="title">Sports Activity Manager EOS</div>
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>Activityid</th>
+                                        <th>Username</th>
+                                        <th>Time</th>
+                                        <th>Distance</th>
+                                        <th>Speed</th>
+                                        <th>Altitude</th>
+                                        <th>Heart rate</th>
+                                        <th>Calories</th>
+                                        <th>Incline</th>
+                                        <th>Cadence</th>
+                                        <th>Temperature</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="tbl-content">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tbody>
+                                    {this.renderTableData()}
+                                </tbody>
+                            </table>
+                        </div>
+                        <br /><br /><br /><br /><hr /><br />
+                        <div className="bottom">
+                            <Button type="submit" className="green" onClick={this.goBack}>
+                                {"Back"}
+                            </Button>
+                        </div>
+                    </section>
+                </section>
+            </div>
 
         );
     }
