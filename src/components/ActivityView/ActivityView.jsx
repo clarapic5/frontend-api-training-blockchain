@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,} from 'recharts';
+import { Button, UserActivities } from 'components';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 
 
-const data = [
+
+const heartRateData = [
   {
-    name: '', bmp: 100, 
+    name: '', bmp: 100,
   },
   {
-    name: '', bmp: 140, 
+    name: '', bmp: 140,
   },
   {
-    name: '', bmp: 110, 
+    name: '', bmp: 110,
   },
   {
     name: '10 min', bmp: 150,
   },
   {
-    name: '', bmp: 142, 
+    name: '', bmp: 142,
   },
   {
     name: '', bmp: 100,
@@ -27,21 +29,21 @@ const data = [
 ];
 
 
-const data2 = [
+const speedData = [
   {
-    name: '', speed: 5, 
+    name: '', speed: 5,
   },
   {
-    name: '', speed: 6, 
+    name: '', speed: 6,
   },
   {
-    name: '', speed: 5, 
+    name: '', speed: 5,
   },
   {
     name: '10 min', speed: 7,
   },
   {
-    name: '', speed: 8, 
+    name: '', speed: 8,
   },
   {
     name: '', speed: 5,
@@ -57,23 +59,29 @@ class ActivityView extends Component {
     super(props);
 
     this.state = {
-      isPressed: false,
+      goBack: false
     }
+    //Bind
+    this.goBack = this.goBack.bind(this);
   }
 
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
 
+  goBack() {
+    this.setState({
+      goBack: true
+    });
+  }
   render() {
-    // Extract data nameuser from props
-    const { name } = this.props;
-
+    const goBack = this.state.goBack;
+    if (goBack) return <UserActivities />
     return (
       <div className="ActivityView">
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data={heartRateData}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
@@ -82,13 +90,13 @@ class ActivityView extends Component {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="bmp"  stroke="#DB1227" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="bmp" stroke="#DB1227" activeDot={{ r: 8 }} />
         </LineChart>
 
         <LineChart
           width={500}
           height={300}
-          data={data2}
+          data={speedData}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
@@ -99,8 +107,8 @@ class ActivityView extends Component {
           <Tooltip />
           <Line type="monotone" dataKey="speed" stroke="#129E2A" activeDot={{ r: 8 }} />
         </LineChart>
-        
-
+        <hr /><br />
+        <div class="bottom"><button class="Button green" type="submit" onClick={this.goBack} >Back</button></div>
       </div>
     )
   }
