@@ -75,7 +75,7 @@ class UserActivities extends Component {
                     <td>{incline} %</td>
                     <td>{cadence} rpm</td>
                     <td>{temperature} °C</td>
-                    <th value="VIEW" onClick={() => this.viewActivity(activity)}>View</th>
+                    <ta font-size= '38px' value="VIEW" onClick={() => this.viewActivity(activity)}>👁</ta>
                 </tr>
             )
         })
