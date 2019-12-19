@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, UserActivities } from 'components';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
-
+import heartRate from './images/heart-rate.png';
 
 
 const heartRateData = [
@@ -78,6 +78,7 @@ class ActivityView extends Component {
     if (goBack) return <UserActivities />
     return (
       <div className="ActivityView">
+        <center> <img src={heartRate} alt="symbol heart rate" /></center>
         <LineChart
           width={500}
           height={300}
@@ -107,7 +108,7 @@ class ActivityView extends Component {
           <Tooltip />
           <Line type="monotone" dataKey="speed" stroke="#129E2A" activeDot={{ r: 8 }} />
         </LineChart>
-        <hr /><br />
+        
         <div class="bottom"><button class="Button green" type="submit" onClick={this.goBack} >Back</button></div>
       </div>
     )

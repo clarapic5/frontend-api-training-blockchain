@@ -16,9 +16,9 @@
 }
 
 .ActivityView>* {
-    margin: 5px auto;
+    margin: 8px auto;
     padding: 0 72px;
-    width: 615px;
+    width: 192px;
 }
 
 .ActivityView .title {
@@ -107,4 +107,10 @@
 
 .ActivityView .buttons {
     bottom: 85px;
+}
+
+.ActivityView .HeartRate {
+    background-image: url(./images/heart-rate.png);
+    float: right;
+    margin: 10px;
 }
