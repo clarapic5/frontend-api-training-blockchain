@@ -3,7 +3,7 @@
     position: relative;
     margin: 0 auto;
     width: 1366px;
-    height: 768px;
+    height: 850px;
     background-size: 615px;
     color: #5e5454;
     font-size: 14.5px;
@@ -111,6 +111,12 @@
 
 .ActivityView .HeartRate {
     background-image: url(./images/heart-rate.png);
+    float: right;
+    margin: 10px;
+}
+
+.ActivityView .Speed {
+    background-image: url(./images/symbol-run.png);
     float: right;
     margin: 10px;
 }

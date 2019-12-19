@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, UserActivities } from 'components';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import heartRate from './images/heart-rate.png';
-
+import speed from './images/symbol-run.png';
 
 const heartRateData = [
   {
@@ -93,7 +93,7 @@ class ActivityView extends Component {
           <Tooltip />
           <Line type="monotone" dataKey="bmp" stroke="#DB1227" activeDot={{ r: 8 }} />
         </LineChart>
-
+        <center> <img src={speed} alt="symbol speed" /></center>
         <LineChart
           width={500}
           height={300}
