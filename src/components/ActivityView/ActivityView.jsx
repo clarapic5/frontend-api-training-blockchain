@@ -82,8 +82,7 @@ class ActivityView extends Component {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="bmp" stroke="#DB1227" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="bmp"  stroke="#DB1227" activeDot={{ r: 8 }} />
         </LineChart>
 
         <LineChart
@@ -98,8 +97,7 @@ class ActivityView extends Component {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="speed" stroke="#F2C42E" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="speed" stroke="#129E2A" activeDot={{ r: 8 }} />
         </LineChart>
         
 
