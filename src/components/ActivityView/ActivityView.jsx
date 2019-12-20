@@ -118,13 +118,34 @@ class ActivityView extends Component {
               </LineChart>
             </div>
 
-            <div class="column">
+            <div class="little">
               <h2>3rd Content Area</h2>
               <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
             </div>
-
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
           </section>
-
+          <section class="columns">
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+          </section>
+          <br></br>
           <footer>
             <div class="bottom"><button class="Button green" type="submit" onClick={this.goBack} >Back</button></div>
           </footer>
