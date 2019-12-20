@@ -3,6 +3,7 @@ import { Button, UserActivities } from 'components';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import heartRate from './images/heart-rate.png';
 import speed from './images/symbol-run.png';
+import time from './images/symbol-time.png'
 
 const heartRateData = [
   {
@@ -119,8 +120,10 @@ class ActivityView extends Component {
             </div>
 
             <div class="little">
-              <h2>3rd Content Area</h2>
-              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+              <center> <img src={time} alt="symbol time" /></center>
+              <div class="centerRight">
+                <h5>00:15:00 min </h5>
+              </div>
             </div>
             <div class="little">
               <h2>3rd Content Area</h2>

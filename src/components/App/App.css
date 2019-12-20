@@ -53,6 +53,17 @@ h1 {
     margin-bottom: 15px;
 }
 
+h5 {
+    font-family: 'Almendra Bold';
+    font-size: 22px;
+    color: #000B24;
+    top: -81px;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
 table {
     width: 100%;
     table-layout: fixed;
