@@ -78,6 +78,81 @@ class ActivityView extends Component {
     if (goBack) return <UserActivities />
     return (
       <div className="ActivityView">
+        <div class="wrapper">
+          <section class="columns">
+
+            <div class="column">
+              <center> <img src={heartRate} alt="symbol heart rate" /></center>
+              <br></br>
+              <LineChart
+                width={500}
+                height={300}
+                data={heartRateData}
+                margin={{
+                  top: 5, right: 30, left: 20, bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="bmp" stroke="#DB1227" activeDot={{ r: 8 }} />
+              </LineChart>
+            </div>
+
+            <div class="column">
+              <center> <img src={speed} alt="symbol speed" /></center>
+              <LineChart
+                width={500}
+                height={300}
+                data={speedData}
+                margin={{
+                  top: 5, right: 30, left: 20, bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="speed" stroke="#129E2A" activeDot={{ r: 8 }} />
+              </LineChart>
+            </div>
+
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+          </section>
+          <section class="columns">
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+            <div class="little">
+              <h2>3rd Content Area</h2>
+              <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium voluptatibus recusandae?</p>
+            </div>
+          </section>
+          <br></br>
+          <footer>
+            <div class="bottom"><button class="Button green" type="submit" onClick={this.goBack} >Back</button></div>
+          </footer>
+
+        </div>
+      </div>
+      /*<div className="ActivityView">
         <center> <img src={heartRate} alt="symbol heart rate" /></center>
         <LineChart
           width={500}
@@ -110,7 +185,7 @@ class ActivityView extends Component {
         </LineChart>
         
         <div class="bottom"><button class="Button green" type="submit" onClick={this.goBack} >Back</button></div>
-      </div>
+      </div>*/
     )
   }
 }
