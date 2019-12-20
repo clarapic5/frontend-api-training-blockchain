@@ -120,3 +120,42 @@
     float: right;
     margin: 10px;
 }
+
+.ActivityView .wrapper {
+    padding: 5px;
+    max-width: 1145px;
+    width: 120%;
+    margin: 20px auto;
+}
+
+.ActivityView header {
+    padding: 0 15px;
+}
+
+.ActivityView .columns {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.ActivityView .column {
+    flex: 1;
+    border: 1px solid gray;
+    margin: 2px;
+    padding: 10px;
+    width: 522px;
+    height: 380px;
+}
+
+.ActivityView .column:first-child {
+    margin-left: 0;
+}
+
+.ActivityView .column:last-child {
+    margin-right: 0;
+}
+
+.ActivityView .footer {
+    padding: 0 15px;
+}
