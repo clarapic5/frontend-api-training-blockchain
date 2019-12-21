@@ -57,23 +57,21 @@ class UserActivities extends Component {
             activity.username === localStorage.getItem("user_account"));
 
         return userActivities.map((activity, index) => {
-            const { activityid, username, training_time, distance,
-                speed, altitude, heart_rate, calories, incline,
-                cadence, temperature } = activity //destructuring
+            const { activityid, username, duration, distance, avg_speed,
+            altitude, avg_hrate, calories, weather, temperature } = activity //destructuring
 
 
             return (
                 <tr key={activityid}>
                     <td>{activityid}</td>
                     <td>{username}</td>
-                    <td>{training_time} sec</td>
+                    <td>{duration} min</td>
                     <td>{distance} km </td>
-                    <td>{speed} km/h</td>
+                    <td>{avg_speed}   </td>
                     <td>{altitude} m</td>
-                    <td>{heart_rate} bpm</td>
+                    <td>{avg_hrate} bpm</td>
                     <td>{calories} kcal</td>
-                    <td>{incline} %</td>
-                    <td>{cadence} rpm</td>
+                    <td>{weather}   </td>
                     <td>{temperature} °C</td>
                     <ta font-size= '38px' value="VIEW" onClick={() => this.viewActivity(activity)}>👁</ta>
                 </tr>
@@ -113,16 +111,15 @@ class UserActivities extends Component {
                             <table cellpadding="0" cellspacing="0" border="0">
                                 <thead>
                                     <tr>
-                                        <th>Activityid</th>
+                                        <th>ID</th>
                                         <th>Username</th>
-                                        <th>Time</th>
+                                        <th>Duration</th>
                                         <th>Distance</th>
-                                        <th>Speed</th>
+                                        <th>AVG Speed</th>
                                         <th>Altitude</th>
-                                        <th>Heart rate</th>
+                                        <th>AVG H Rate</th>
                                         <th>Calories</th>
-                                        <th>Incline</th>
-                                        <th>Cadence</th>
+                                        <th>Weather</th>
                                         <th>Temperature</th>
                                         <th></th>
                                     </tr>
