@@ -51,8 +51,8 @@ class ApiService {
         });
     }
 
-    //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT)
-    //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
+    //Login transaction, put the data on blockchain
+    //Private key
     static login({ username, key }) {
         return new Promise((resolve, reject) => {
             localStorage.setItem("user_account", username);
@@ -70,8 +70,10 @@ class ApiService {
     }
 
 
+
+    //Insert activity transaction
     static insert(id, duration, dist, sp1, sp2, sp3, sp4, sp5, sp6, sp7, avg_sp,
-    alt, hrt1, hrt2, hrt3, hrt4, hrt5, hrt6, hrt7, avg_hrt, cal, weather, temp) {
+        alt, hrt1, hrt2, hrt3, hrt4, hrt5, hrt6, hrt7, avg_hrt, cal, weather, temp) {
         return new Promise((resolve, reject) => {
             //localStorage.setItem("IDACTIVITY ", id);
             //localStorage.setItem("distancia ", dist);
@@ -111,9 +113,26 @@ class ApiService {
         });
     }
 
+    //Remove activity transaction by id
+    static remove(id) {
+        return new Promise((resolve, reject) => {
+            return takeAction("remove", {
+                    activityid: id,
+                    username: localStorage.getItem("user_account")
+                })
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    console.log(err);
+                    reject(err);
+                });
+        });
+    }
+
+
     //NO Necesitas la key porque leer datos es publico
     static async getUserByName(username) {
-
         try {
             const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
             const result = await rpc.get_table_rows({

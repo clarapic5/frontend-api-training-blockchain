@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Button, App, ActivityView } from 'components';
 import { ApiService } from 'services';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal);
 
 class UserActivities extends Component {
 
@@ -11,12 +15,14 @@ class UserActivities extends Component {
             activities: [],
             activitySelected: null,
             clickOn: false,
-            goBack: false
+            goBack: false,
+            refresh: false,
         };
         // Bind
         this.loadActivity = this.loadActivity.bind(this);
         this.goBack = this.goBack.bind(this);
         this.viewActivity = this.viewActivity.bind(this);
+        this.deleteActivitybyId = this.deleteActivitybyId.bind(this);
         this.loadActivity();
     }
 
@@ -52,13 +58,44 @@ class UserActivities extends Component {
             })
 
     }
+
+    deleteActivitybyId(id) {
+        MySwal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                return ApiService.remove(id).then(response => {
+                    this.setState({
+                        refresh: true
+                    });
+                    Swal.fire(
+                        'Deleted!',
+                        'Transaction completed',
+                        'success'
+                    )
+
+                })
+                    .catch(err => {
+                        localStorage.setItem("error", err);
+                    });
+            }
+        })
+    }
+
+
     renderTableData() {
         const userActivities = this.state.activities.filter(activity =>
             activity.username === localStorage.getItem("user_account"));
 
         return userActivities.map((activity, index) => {
             const { activityid, username, duration, distance, avg_speed,
-            altitude, avg_hrate, calories, weather, temperature } = activity //destructuring
+                altitude, avg_hrate, calories, weather, temperature } = activity //destructuring
 
 
             return (
@@ -73,7 +110,8 @@ class UserActivities extends Component {
                     <td>{calories} kcal</td>
                     <td>{weather}   </td>
                     <td>{temperature} °C</td>
-                    <ta font-size= '38px' value="VIEW" onClick={() => this.viewActivity(activity)}>👁</ta>
+                    <ta font-size='38px' value="VIEW" onClick={() => this.viewActivity(activity)}>👁   </ta>
+                    <ta font-size='38px' value="VIEW" onClick={() => this.deleteActivitybyId(activity.activityid)}>       🗑</ta>
                 </tr>
             )
         })
@@ -99,9 +137,11 @@ class UserActivities extends Component {
         const goBack = this.state.goBack;
         const clickOn = this.state.clickOn;
         const activitySelected = this.state.activitySelected;
-        
+        const refresh = this.state.refresh;
+
         if (goBack) return <App />
-        if (clickOn) return (<ActivityView activitySelected = {activitySelected}/>)
+        if (clickOn) return (<ActivityView activitySelected={activitySelected} />)
+        if (refresh) return <UserActivities />
         return (
             <div class="App">
                 <section class="Menu">
@@ -123,6 +163,7 @@ class UserActivities extends Component {
                                         <th>Calories</th>
                                         <th>Weather</th>
                                         <th>Temperature</th>
+                                        <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
