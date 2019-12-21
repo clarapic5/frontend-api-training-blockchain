@@ -98,8 +98,10 @@ class UserActivities extends Component {
     render() {
         const goBack = this.state.goBack;
         const clickOn = this.state.clickOn;
+        const activitySelected = this.state.activitySelected;
+        
         if (goBack) return <App />
-        if (clickOn) return (<ActivityView />)
+        if (clickOn) return (<ActivityView activitySelected = {activitySelected}/>)
         return (
             <div class="App">
                 <section class="Menu">
