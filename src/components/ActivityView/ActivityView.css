@@ -1,180 +1,206 @@
-            .ActivityView {
-                background-image: url("./images/App_background.jpg");
-                position: relative;
-                margin: 0 auto;
-                width: 1366px;
-                height: 850px;
-                background-size: 615px;
-                color: #5e5454;
-                font-size: 14.5px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                transform-origin: top left;
-                transition: all 500ms ease-in-out !important;
-            }
-            
-            .ActivityView>* {
-                margin: 5px auto;
-                padding: 0px 279px;
-                width: 192px;
-            }
-            
-            .ActivityView .title {
-                position: absolute;
-                top: -109px;
-                width: 507px;
-                height: 257.5px;
-                background: url("./images/App_logo.png");
-                background-size: 112%;
-                color: transparent;
-            }
-            
-            .ActivityView .username {
-                top: 135px;
-                font-size: 45px;
-                text-shadow: 2px 2px 2px black;
-            }
-            
-            .ActivityView .welcome {
-                top: 105px;
-                color: #f25050;
-                font-size: 22.5px;
-            }
-            
-            .ActivityView .description {
-                margin-top: 50px;
-                margin-bottom: 25px;
-                line-height: 1.5em;
-            }
-            
-            .ActivityView .field {
-                margin-bottom: 15px;
-            }
-            
-            .ActivityView .field label {
-                color: #5e5454;
-                text-transform: uppercase;
-            }
-            
-            .ActivityView .field input {
-                margin: 5px 0;
-                padding: 4px 20px 0;
-                width: 471.5px;
-                height: 42px;
-                background-size: 471.5px;
-                color: #312a25;
-                letter-spacing: 3px;
-                /* https://stackoverflow.com/a/37432260 */
-            }
-            
-            .ActivityView .field input::placeholder {
-                color: #666;
-                letter-spacing: 2px;
-            }
-            
-            @-webkit-keyframes autofill {
-                to {
-                    background-size: 471.5px;
-                }
-            }
-            
-            .ActivityView .field input:-webkit-autofill {
-                -webkit-animation-name: autofill;
-                -webkit-animation-fill-mode: both;
-            }
-            
-            .ActivityView .form-error {
-                height: 1em;
-                font-size: 14.5px;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-            
-            .ActivityView .form-error .error {
-                width: 100%;
-                color: #ff5400;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                display: inline-block;
-            }
-            
-            .ActivityView .bottom {
-                margin-top: 5px;
-                text-align: center;
-            }
-            
-            .ActivityView .buttons {
-                bottom: 85px;
-            }
-            
-            .ActivityView .HeartRate {
-                background-image: url(./images/heart-rate.png);
-                float: right;
-                margin: 10px;
-            }
-            
-            .ActivityView .Speed {
-                background-image: url(./images/symbol-run.png);
-                float: right;
-                margin: 10px;
-            }
-            
-            .ActivityView .Time {
-                background-image: url(./images/symbol-time.png);
-                float: right;
-                margin: 10px;
-            }
-            
-            .ActivityView .wrapper {
-                padding: 5px;
-                max-width: 1145px;
-                width: 120%;
-                margin: 20px auto;
-            }
-            
-            .ActivityView header {
-                padding: 0 15px;
-            }
-            
-            .ActivityView .columns {
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: center;
-                margin: 5px 0;
-            }
-            
-            .ActivityView .column {
-                flex: 1;
-                border: 1px solid gray;
-                margin: 2px;
-                padding: 10px;
-                width: 522px;
-                height: 380px;
-            }
-            
-            .ActivityView .little {
-                flex: 1;
-                border: 1px solid gray;
-                margin: 2px;
-                padding: 10px;
-                width: 300px;
-                height: 113px;
-            }
-            
-            .ActivityView .column:first-child {
-                margin-left: 0;
-            }
-            
-            .ActivityView .column:last-child {
-                margin-right: 0;
-            }
-            
-            .ActivityView .footer {
-                padding: 0 15px;
-            }
-            
-            .ActivityView .centerRight {
-                text-align: right;
-            }
+                    .ActivityView {
+                        background-image: url("./images/App_background.jpg");
+                        position: relative;
+                        margin: 0 auto;
+                        width: 1366px;
+                        height: 850px;
+                        background-size: 615px;
+                        color: #5e5454;
+                        font-size: 14.5px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        transform-origin: top left;
+                        transition: all 500ms ease-in-out !important;
+                    }
+                    
+                    .ActivityView>* {
+                        margin: 5px auto;
+                        padding: 0px 279px;
+                        width: 192px;
+                    }
+                    
+                    .ActivityView .title {
+                        position: absolute;
+                        top: -109px;
+                        width: 507px;
+                        height: 257.5px;
+                        background: url("./images/App_logo.png");
+                        background-size: 112%;
+                        color: transparent;
+                    }
+                    
+                    .ActivityView .username {
+                        top: 135px;
+                        font-size: 45px;
+                        text-shadow: 2px 2px 2px black;
+                    }
+                    
+                    .ActivityView .welcome {
+                        top: 105px;
+                        color: #f25050;
+                        font-size: 22.5px;
+                    }
+                    
+                    .ActivityView .description {
+                        margin-top: 50px;
+                        margin-bottom: 25px;
+                        line-height: 1.5em;
+                    }
+                    
+                    .ActivityView .field {
+                        margin-bottom: 15px;
+                    }
+                    
+                    .ActivityView .field label {
+                        color: #5e5454;
+                        text-transform: uppercase;
+                    }
+                    
+                    .ActivityView .field input {
+                        margin: 5px 0;
+                        padding: 4px 20px 0;
+                        width: 471.5px;
+                        height: 42px;
+                        background-size: 471.5px;
+                        color: #312a25;
+                        letter-spacing: 3px;
+                        /* https://stackoverflow.com/a/37432260 */
+                    }
+                    
+                    .ActivityView .field input::placeholder {
+                        color: #666;
+                        letter-spacing: 2px;
+                    }
+                    
+                    @-webkit-keyframes autofill {
+                        to {
+                            background-size: 471.5px;
+                        }
+                    }
+                    
+                    .ActivityView .field input:-webkit-autofill {
+                        -webkit-animation-name: autofill;
+                        -webkit-animation-fill-mode: both;
+                    }
+                    
+                    .ActivityView .form-error {
+                        height: 1em;
+                        font-size: 14.5px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                    
+                    .ActivityView .form-error .error {
+                        width: 100%;
+                        color: #ff5400;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        display: inline-block;
+                    }
+                    
+                    .ActivityView .bottom {
+                        margin-top: 5px;
+                        text-align: center;
+                    }
+                    
+                    .ActivityView .buttons {
+                        bottom: 85px;
+                    }
+                    
+                    .ActivityView .HeartRate {
+                        background-image: url(./images/heart-rate.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Speed {
+                        background-image: url(./images/symbol-run.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Time {
+                        background-image: url(./images/symbol-time.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Distance {
+                        background-image: url(./images/symbol-distance.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Altitude {
+                        background-image: url(./images/symbol-altitude.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Calories {
+                        background-image: url(./images/symbol-calories.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Temperature {
+                        background-image: url(./images/symbol-temperature.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .Weather {
+                        background-image: url(./images/symbol-weather.png);
+                        float: right;
+                        margin: 10px;
+                    }
+                    
+                    .ActivityView .wrapper {
+                        padding: 5px;
+                        max-width: 1145px;
+                        width: 120%;
+                        margin: 20px auto;
+                    }
+                    
+                    .ActivityView header {
+                        padding: 0 15px;
+                    }
+                    
+                    .ActivityView .columns {
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: center;
+                        margin: 5px 0;
+                    }
+                    
+                    .ActivityView .column {
+                        flex: 1;
+                        border: 1px solid gray;
+                        margin: 2px;
+                        padding: 10px;
+                        width: 522px;
+                        height: 380px;
+                    }
+                    
+                    .ActivityView .little {
+                        flex: 1;
+                        border: 1px solid gray;
+                        margin: 2px;
+                        padding: 10px;
+                        width: 300px;
+                        height: 120px;
+                    }
+                    
+                    .ActivityView .column:first-child {
+                        margin-left: 0;
+                    }
+                    
+                    .ActivityView .column:last-child {
+                        margin-right: 0;
+                    }
+                    
+                    .ActivityView .footer {
+                        padding: 0 15px;
+                    }
