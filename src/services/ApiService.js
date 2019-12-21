@@ -51,7 +51,7 @@ class ApiService {
         });
     }
 
-    //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT) 
+    //HACE LA TRANSACCION Y METE DATOS EN LA BLOCKCHAIN (INSERT)
     //Necesitas la key (SOLO TU PUEDES HACER LA TRANSACCION)
     static login({ username, key }) {
         return new Promise((resolve, reject) => {
@@ -70,22 +70,36 @@ class ApiService {
     }
 
 
-    static insert(id, time, dist, speed, alt, hrate, cal, incl, cad, temp) {
+    static insert(id, duration, dist, sp1, sp2, sp3, sp4, sp5, sp6, sp7, avg_sp,
+    alt, hrt1, hrt2, hrt3, hrt4, hrt5, hrt6, hrt7, avg_hrt, cal, weather, temp) {
         return new Promise((resolve, reject) => {
-            localStorage.setItem("IDACTIVITY ", id);
-            localStorage.setItem("distancia ", dist);
+            //localStorage.setItem("IDACTIVITY ", id);
+            //localStorage.setItem("distancia ", dist);
             localStorage.setItem("user", localStorage.getItem("user_account"));
             return takeAction("insert", {
                     activityid: id,
                     username: localStorage.getItem("user_account"),
-                    training_time: time,
+                    duration: duration,
                     distance: dist,
-                    speed: speed,
+                    speed1: sp1,
+                    speed2: sp2,
+                    speed3: sp3,
+                    speed4: sp4,
+                    speed5: sp5,
+                    speed6: sp6,
+                    speed7: sp7,
+                    avg_speed: avg_sp,
                     altitude: alt,
-                    heart_rate: hrate,
+                    hrate1: hrt1,
+                    hrate2: hrt2,
+                    hrate3: hrt3,
+                    hrate4: hrt4,
+                    hrate5: hrt5,
+                    hrate6: hrt6,
+                    hrate7: hrt7,
+                    avg_hrate: avg_hrt,
                     calories: cal,
-                    incline: incl,
-                    cadence: cad,
+                    weather: weather,
                     temperature: temp
                 })
                 .then(() => {

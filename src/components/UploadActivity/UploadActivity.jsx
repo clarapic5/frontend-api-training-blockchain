@@ -91,16 +91,29 @@ class UploadActivity extends Component {
 		console.log(activities);
 		console.log(activities.activityid);
 		return ApiService.insert
-			(activities.activityid,
-				activities.training_time,
+			(	activities.activityid,
+				activities.duration,
 				activities.distance,
-				activities.speed,
+				activities.speed1,
+				activities.speed2,
+				activities.speed3,
+				activities.speed4,
+				activities.speed5,
+				activities.speed6,
+				activities.speed7,
+				activities.avg_speed,
 				activities.altitude,
-				activities.heart_rate,
+				activities.hrate1,
+				activities.hrate2,
+				activities.hrate3,
+				activities.hrate4,
+				activities.hrate5,
+				activities.hrate6,
+				activities.hrate7,
+				activities.avg_hrate,
 				activities.calories,
-				activities.incline,
-				activities.cadence,
-				activities.temperature)
+				activities.weather,
+				activities.temperature  )
 			.then(response => {
 				this.showAlertSuccess();
 				console.log("success!!");
