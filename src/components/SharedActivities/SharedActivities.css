@@ -1,0 +1,38 @@
+.SharedActivities {
+    position: relative;
+    margin: 0 auto;
+    width: 1366px;
+    height: 768px;
+    background: url("./images/popup_bg.png") center no-repeat;
+    background-size: 615px;
+    color: #5e5454;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform-origin: top left;
+    transition: all 500ms ease-in-out !important;
+}
+
+.SharedActivities>* {
+    margin: 0 auto;
+    padding: 0 72px;
+    width: 615px;
+}
+
+.SharedActivities .title {
+    position: absolute;
+    top: -81px;
+    width: 469px;
+    height: 239.5px;
+    background: url("./images/App_logo.png");
+    background-size: 112%;
+    color: transparent;
+}
+
+.SharedActivities .description {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    line-height: 1.5em;
+}

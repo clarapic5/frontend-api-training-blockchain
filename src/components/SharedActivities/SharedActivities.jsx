@@ -6,7 +6,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal);
 
-class UserActivities extends Component {
+class SharedActivities extends Component {
 
     constructor(props) {
         super(props);
@@ -16,13 +16,11 @@ class UserActivities extends Component {
             activitySelected: null,
             clickOn: false,
             goBack: false,
-            refresh: false,
         };
         // Bind
         this.loadActivity = this.loadActivity.bind(this);
         this.goBack = this.goBack.bind(this);
         this.viewActivity = this.viewActivity.bind(this);
-        this.deleteActivitybyId = this.deleteActivitybyId.bind(this);
         this.loadActivity();
     }
 
@@ -59,39 +57,9 @@ class UserActivities extends Component {
 
     }
 
-    deleteActivitybyId(id) {
-        MySwal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.value) {
-                return ApiService.remove(id).then(response => {
-                    this.setState({
-                        refresh: true
-                    });
-                    Swal.fire(
-                        'Deleted!',
-                        'Transaction completed',
-                        'success'
-                    )
-
-                })
-                    .catch(err => {
-                        localStorage.setItem("error", err);
-                    });
-            }
-        })
-    }
-
-
     renderTableData() {
         const userActivities = this.state.activities.filter(activity =>
-            activity.username === localStorage.getItem("user_account"));
+            activity.shared == false);
 
         return userActivities.map((activity, index) => {
             const { activityid, username, duration, distance, avg_speed,
@@ -101,6 +69,7 @@ class UserActivities extends Component {
             return (
                 <tr key={activityid}>
                     <td>{activityid}</td>
+                    <td>{username}</td>
                     <td>{duration} min</td>
                     <td>{distance} km </td>
                     <td>{avg_speed}   </td>
@@ -110,7 +79,6 @@ class UserActivities extends Component {
                     <td>{weather}   </td>
                     <td>{temperature} °C</td>
                     <ta font-size='38px' value="VIEW" onClick={() => this.viewActivity(activity)}>👁   </ta>
-                    <ta font-size='38px' value="VIEW" onClick={() => this.deleteActivitybyId(activity.activityid)}>       🗑</ta>
                 </tr>
             )
         })
@@ -136,23 +104,22 @@ class UserActivities extends Component {
         const goBack = this.state.goBack;
         const clickOn = this.state.clickOn;
         const activitySelected = this.state.activitySelected;
-        const refresh = this.state.refresh;
 
         if (goBack) return <App />
         if (clickOn) return (<ActivityView activitySelected={activitySelected} />)
-        if (refresh) return <UserActivities />
         return (
             <div class="App">
                 <section class="Menu">
                     <div class="App"></div>
                     <section>
-                        <h1>MY ACTIVITIES</h1>
+                        <h1>COMMUNITY</h1>
                         <div class="tbl-header">
                             <div class="title">Sports Activity Manager EOS</div>
                             <table cellpadding="0" cellspacing="0" border="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Username</th>
                                         <th>Duration</th>
                                         <th>Distance</th>
                                         <th>AVG Speed</th>
@@ -187,4 +154,4 @@ class UserActivities extends Component {
     }
 }
 
-export default UserActivities;
+export default SharedActivities;
