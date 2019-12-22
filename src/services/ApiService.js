@@ -102,7 +102,8 @@ class ApiService {
                     avg_hrate: avg_hrt,
                     calories: cal,
                     weather: weather,
-                    temperature: temp
+                    temperature: temp,
+                    shared: false, //by default
                 })
                 .then(() => {
                     resolve();

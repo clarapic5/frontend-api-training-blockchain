@@ -18,6 +18,10 @@ class UserProfile extends Component {
     this.props.changeActivityPressed(this.state.isPressed);
   }
 
+  isButtonCommunityClicked() {
+    this.props.changeCommunityPressed(this.state.isPressed);
+  }
+
   render() {
     // Extract data nameuser from props
     const { name } = this.props;
@@ -39,7 +43,9 @@ class UserProfile extends Component {
         <div className="buttons">
           <Button onClick={this.isButtonActivitiesClicked.bind(this)} className="green">MY ACTIVITIES</Button>
         </div>
-
+        <div className="buttons">
+          <Button onClick={this.isButtonCommunityClicked.bind(this)} className="green">COMMUNITY</Button>
+        </div>
       </div>
     )
   }

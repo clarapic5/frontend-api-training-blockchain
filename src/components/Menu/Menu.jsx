@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
 import { UserProfile, UploadActivity } from 'components';
-import { UserActivities } from 'components';
+import { UserActivities, SharedActivities} from 'components';
 
 
 class Menu extends Component {
@@ -13,7 +13,8 @@ class Menu extends Component {
 
     this.state = {
       isPressed: false,
-      isActivityPressed: false
+      isActivityPressed: false,
+      isCommunityPressed: false
     };
 
     this.loadUser = this.loadUser.bind(this);
@@ -30,6 +31,12 @@ class Menu extends Component {
   onChangeActivityButtonPressed() {
     this.setState({
       isActivityPressed: true
+    });
+  }
+
+  onChangeCommunityButtonPressed() {
+    this.setState({
+      isCommunityPressed: true
     });
   }
 
@@ -52,12 +59,14 @@ class Menu extends Component {
 
     if (this.state.isPressed) return (<section className="Menu"><UploadActivity/></section>)
     if (this.state.isActivityPressed) return (<UserActivities/> )
+    if (this.state.isCommunityPressed) return(<SharedActivities/>)
     else
       return (<section className="Menu">
         <UserProfile
           name={name}
           changePressed={this.onChangeButtonPressed.bind(this)}
           changeActivityPressed = {this.onChangeActivityButtonPressed.bind(this)}
+          changeCommunityPressed = {this.onChangeCommunityButtonPressed.bind(this)}
         />
       </section>)
   }
