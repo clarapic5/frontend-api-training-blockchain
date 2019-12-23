@@ -70,7 +70,6 @@ class ApiService {
     }
 
 
-
     //Insert activity transaction
     static insert(id, duration, dist, sp1, sp2, sp3, sp4, sp5, sp6, sp7, avg_sp,
         alt, hrt1, hrt2, hrt3, hrt4, hrt5, hrt6, hrt7, avg_hrt, cal, weather, temp) {
@@ -113,6 +112,21 @@ class ApiService {
                 });
         });
     }
+
+    static share(id) {
+        return new Promise((resolve, reject) => {
+            takeAction("share", { activityid: id, username: localStorage.getItem("user_account"), })
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    console.log(err);
+                    reject(err);
+                });
+        });
+    }
+
+
 
     //Remove activity transaction by id
     static remove(id) {

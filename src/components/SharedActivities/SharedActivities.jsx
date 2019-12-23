@@ -59,7 +59,7 @@ class SharedActivities extends Component {
 
     renderTableData() {
         const userActivities = this.state.activities.filter(activity =>
-            activity.shared == false);
+            activity.shared == true);
 
         return userActivities.map((activity, index) => {
             const { activityid, username, duration, distance, avg_speed,

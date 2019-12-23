@@ -126,8 +126,8 @@ class UploadActivity extends Component {
 
 	showAlertSuccess() {
 		MySwal.fire(
-			'Success!',
-			'The transaction has been realized',
+			'Imported!',
+			'Transaction completed',
 			'success'
 		)
 	}
